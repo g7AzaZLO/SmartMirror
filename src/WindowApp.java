@@ -26,7 +26,7 @@ public class WindowApp extends JFrame { //Наследуя от JFrame мы по
 
     }
 
-    public void setTime(){
+    public void setTime(){ // функция обновления времени
         while(true) {
             time = timeFormat.format(Calendar.getInstance().getTime()); //парсим время
             timeLabel.setText(time); //устанавливаем в наш лейбл сам текст
