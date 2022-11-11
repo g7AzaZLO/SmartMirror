@@ -20,7 +20,11 @@ public class Parser {
         Elements names =  tableWeather.select("a"); //выцепляем дни с датой
         Element weather = tableWeather.select("div[class=widget-row widget-row-icon]").first(); //табличка с погодой
         Elements weatherUnit = weather.select("div[class=row-item]");//еще урезаем табл с погодой
-        String[] weatherArray = new String[10];
+        Element temperature = tableWeather.select("div[class=values]").first(); //выцепляем таблицу температуры
+        Elements temperatureAll = temperature.select("div[class=value style_size_m]");
+
+
+        String[] weatherArray = new String[10]; //массив погоды
         int weatherCounter=0;
         for(Element unit : weatherUnit){
             String readyWeather = unit.toString(); //переводим в стринг наш блок с погодой
@@ -28,7 +32,7 @@ public class Parser {
             String dsplitWeather = splitWeather.split("\">")[0]; //обрезаем лишнее после погоды
             weatherArray[weatherCounter++] = dsplitWeather; //добавляем погоду в массив
         }
-        String[] dayArray = new String[10];
+        String[] dayArray = new String[10]; //массив дней
         int dayCounter = 0;
         for(Element name : names){
             String day = name.text(); //выцепляем день, переводим в текст
@@ -37,8 +41,26 @@ public class Parser {
         dayArray[0] = "Сегодня";
         dayArray[1] = "Завтра";
 
+        String[] arrayTemperatureMax = new String[10]; //массив максимальной температуры
+        int tempMaxCounter = 0;
+        for(Element tempMax : temperatureAll){
+            Element tempM = tempMax.select("div[class=maxt]").first();
+            Element tempa = tempM.select("span[class=unit unit_temperature_c]").first(); //находим макс темп.
+            String temper = tempa.text(); //извлекаем температуру из формы
+            arrayTemperatureMax[tempMaxCounter++] = temper;
+        }
+
+        String[] arrayTemperatureMin = new String[10]; //массив максимальной температуры
+        int tempMinCounter = 0;
+        for(Element tempMix : temperatureAll){
+            Element tempM = tempMix.select("div[class=mint]").first();
+            Element tempa = tempM.select("span[class=unit unit_temperature_c]").first(); //находим макс темп.
+            String temper = tempa.text(); //извлекаем температуру из формы
+            arrayTemperatureMin[tempMinCounter++] = temper;
+        }
+
         for(int i=0;i<10;i++){
-            System.out.println(dayArray[i]+" -> "+ weatherArray[i]);
+            System.out.println(dayArray[i]+" -> "+ weatherArray[i]+" -> "+ arrayTemperatureMax[i]+" " + arrayTemperatureMin[i]);
         }
     }
 
