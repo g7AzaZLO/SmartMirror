@@ -59,7 +59,7 @@ public class Parser {
             arrayTemperatureMin[tempMinCounter++] = temper; //добавляем в массив
         }
 
-        for(int i=0;i<;i++){
+        for(int i=0;i<5;i++){
             System.out.println(dayArray[i]+" -> "+ weatherArray[i]+" -> "+ arrayTemperatureMax[i]+" " + arrayTemperatureMin[i]);
         }
     }
