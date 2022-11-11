@@ -47,7 +47,7 @@ public class Parser {
             Element tempM = tempMax.select("div[class=maxt]").first();
             Element tempa = tempM.select("span[class=unit unit_temperature_c]").first(); //находим макс темп.
             String temper = tempa.text(); //извлекаем температуру из формы
-            arrayTemperatureMax[tempMaxCounter++] = temper;
+            arrayTemperatureMax[tempMaxCounter++] = temper; //добавляем температуру в массив
         }
 
         String[] arrayTemperatureMin = new String[10]; //массив максимальной температуры
@@ -56,7 +56,7 @@ public class Parser {
             Element tempM = tempMix.select("div[class=mint]").first();
             Element tempa = tempM.select("span[class=unit unit_temperature_c]").first(); //находим макс темп.
             String temper = tempa.text(); //извлекаем температуру из формы
-            arrayTemperatureMin[tempMinCounter++] = temper;
+            arrayTemperatureMin[tempMinCounter++] = temper; //добавляем в массив
         }
 
         for(int i=0;i<10;i++){
