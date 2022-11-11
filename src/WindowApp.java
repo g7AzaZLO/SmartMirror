@@ -4,12 +4,13 @@ import javax.swing.*;
 import java.util.Calendar;
 import java.lang.Thread;
 import java.util.Random;
+import javax.swing.*;
 
 public class WindowApp extends JFrame { //Наследуя от JFrame мы получаем всю функциональность окна
 
-    Calendar calendar;
+    public Calendar calendar;
     public JLabel timeLabel;
-    JLabel frazeLabel;
+    public JLabel frazeLabel;
     public WindowApp(){
         //----------------------Настройки окна---------------------------
         super("SmartMirror"); //Заголовок окна
