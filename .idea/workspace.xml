@@ -4,11 +4,13 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="43d7158a-dc04-420b-8992-71886501b65e" name="Changes" comment="">
+    <list default="true" id="43d7158a-dc04-420b-8992-71886501b65e" name="Changes" comment="модуль парсера погоды">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/SmartMirror/Main.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/SmartMirror/Main.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/SmartMirror/WindowApp$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/SmartMirror/WindowApp$1.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/SmartMirror/WindowApp$2.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/SmartMirror/WindowApp$2.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/SmartMirror/WindowApp$3.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/SmartMirror/WindowApp$3.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/SmartMirror/WindowApp$4.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/SmartMirror/WindowApp$4.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/SmartMirror/WindowApp.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/SmartMirror/WindowApp.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Main.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/WindowApp.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/WindowApp.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -19,7 +21,7 @@
   <component name="Git.Settings">
     <option name="RECENT_BRANCH_BY_REPOSITORY">
       <map>
-        <entry key="$PROJECT_DIR$" value="main" />
+        <entry key="$PROJECT_DIR$" value="Weather" />
       </map>
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -32,12 +34,12 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;
   }
-}]]></component>
+}</component>
   <component name="RunManager">
     <configuration name="Main" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="Main" />
@@ -67,6 +69,14 @@
       <option name="presentableId" value="Default" />
       <updated>1668371998164</updated>
     </task>
+    <task id="LOCAL-00001" summary="модуль парсера погоды">
+      <created>1668377989211</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1668377989211</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -79,5 +89,13 @@
         </entry>
       </map>
     </option>
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="модуль парсера погоды" />
+    <option name="LAST_COMMIT_MESSAGE" value="модуль парсера погоды" />
+  </component>
+  <component name="com.intellij.coverage.CoverageDataManagerImpl">
+    <SUITE FILE_PATH="coverage/SmartMirror$Parser.ic" NAME="Parser Coverage Results" MODIFIED="1668163807775" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
+    <SUITE FILE_PATH="coverage/SmartMirror$Main.ic" NAME="Main Coverage Results" MODIFIED="1668028577093" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
   </component>
 </project>

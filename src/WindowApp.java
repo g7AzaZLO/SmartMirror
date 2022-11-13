@@ -8,6 +8,7 @@ import java.lang.Thread;
 import java.util.Date;
 import java.util.GregorianCalendar;
 import java.util.Random;
+
 public class WindowApp extends JFrame { //Наследуя от JFrame мы получаем всю функциональность окна
     SimpleDateFormat timeFormat;
     JLabel timeLabel;
@@ -23,6 +24,8 @@ public class WindowApp extends JFrame { //Наследуя от JFrame мы по
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE); //это нужно для того чтобы при закрытии окна закрывалась и программа
         this.getContentPane().setBackground(Color.BLACK); //задний фон окна черный
         this.setResizable(false); //на всякий случай убираем возможность изменения размера окна
+        this.setLayout(null); //без этого иногда не работает setBounds
+
 
         timeFormat = new SimpleDateFormat("HH:mm:ss"); //создаем формат времени
         timeLabel = new JLabel(); //создаем лейбл под время
@@ -32,10 +35,12 @@ public class WindowApp extends JFrame { //Наследуя от JFrame мы по
         int screensizex = ( int )size.getWidth();  // Записываем ширину экрана
         int screensizey = (int) size.getHeight(); // Записываем высоту экрана
         System.out.println(screensizex+" "+screensizey); // Выводим размер экрана()
-        timeLabel.setBounds(screensizex/2,screensizey/2-100,1000,400); //ставим время ближе к центру в центр
+        timeLabel.setBounds(screensizex/2,screensizey/2-660,1000,400); //ставим время ближе к центру в центр
         frazeLabel = new JLabel(); //создаем лейбл под время
+        frazeLabel.setHorizontalAlignment(JLabel.CENTER);
         CalendarLabel = new JLabel(); //создаем лейбл под дату
         this.getContentPane().setBackground(Color.BLACK); //задний фон окна черный
+        frazeLabel.setBounds(screensizex/2-475,600,1000,400);
         ////Журавлев Д.С.
         this.add(CalendarLabel);;//добавляем кнопку
         CalendarLabel.setBounds(JLabel.LEADING,JLabel.LEADING-130,1000,400); //ставим календарь ближе к центру в центр
