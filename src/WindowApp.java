@@ -1,4 +1,3 @@
-package SmartMirror;
 import javax.swing.JFrame;
 import java.awt.*;
 import javax.swing.*;
@@ -44,7 +43,7 @@ public class WindowApp extends JFrame { //Наследуя от JFrame мы по
         dataLabel = new JLabel(); //создаем лейбл под время
         dataLabel.setForeground(Color.WHITE); //делаем текст белым
         this.add(dataLabel);
-        dataLabel.setBounds(screensizex/2-760,screensizey/2-620,1000,400); //ставим время ближе к центру в центр
+        dataLabel.setBounds(screensizex/2-710,screensizey/2-660,1000,400); //ставим время ближе к центру в центр
         todayLabel = new JLabel(); //создаем лейбл под время
         todayLabel.setForeground(Color.GREEN); //делаем текст белым
         this.add(dataLabel);
@@ -85,7 +84,7 @@ public class WindowApp extends JFrame { //Наследуя от JFrame мы по
                     for(;;){
                         time = timeFormat.format(Calendar.getInstance().getTime()); //парсим время
                         timeLabel.setText(time); //устанавливаем в наш лейбл сам текст
-                        sleep(10000);
+                        sleep(1000);
                     }
                 }
                 catch (Exception e){
@@ -103,7 +102,7 @@ public class WindowApp extends JFrame { //Наследуя от JFrame мы по
                         SimpleDateFormat formatter= new SimpleDateFormat("dd-MM-yyyy");
                         Date date = new Date();
                         dataLabel.setText("Текущая дата:  " + formatter.format(date)); //устанавливаем в наш лейбл сам текст
-                        sleep(100);
+                        sleep(100000);
                     }
                 }
                 catch (Exception e){
@@ -168,9 +167,9 @@ public class WindowApp extends JFrame { //Наследуя от JFrame мы по
                             // print day
                             int day = d.get(Calendar.DAY_OF_MONTH);
                             int day1=day;
-                            if(day1/10==0){if (day == today){A+="<font color=red>";A+=today;A+="</font>";}else A+=day;A+=c;A+=c;if(fl==true)schetchikprobelov+=4;}
+                            if(day1/10==0){if (day == today){A+="<font bgcolor=red>";A+=today;A+="</font>";}else A+=day;A+=c;A+=c;if(fl==true)schetchikprobelov+=4;}
                             else
-                            if(day1/100==0){if (day == today){A+="<font color=red>";A+=today;A+="</font>";}else A+=day;A+=c;if(fl==true)schetchikprobelov+=2;}
+                            if(day1/100==0){if (day == today){A+="<font bgcolor=red>";A+=today;A+="</font>";}else A+=day;A+=c;if(fl==true)schetchikprobelov+=2;}
                             // mark current day with *
                             if (day == today){A+=c;}
                             else{A+=c;}
@@ -189,7 +188,7 @@ public class WindowApp extends JFrame { //Наследуя от JFrame мы по
                         if (weekday != firstDayOfWeek){A+="<br>";}
                         A+="<html>";
                         CalendarLabel.setText(A); //устанавливаем в наш лейбл сам текст
-                        sleep(100);
+                        sleep(100000);
                     }
                 }
                 catch (Exception e){
