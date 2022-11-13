@@ -1,0 +1,63 @@
+Index: .idea/workspace.xml
+===================================================================
+diff --git a/.idea/workspace.xml b/.idea/workspace.xml
+--- a/.idea/workspace.xml	
++++ b/.idea/workspace.xml	
+@@ -4,10 +4,8 @@
+     <option name="autoReloadType" value="SELECTIVE" />
+   </component>
+   <component name="ChangeListManager">
+-    <list default="true" id="ae4c605e-43be-45a3-89fe-a695d36dca05" name="Changes" comment="Обрезан вывод до 5 дней">
++    <list default="true" id="ae4c605e-43be-45a3-89fe-a695d36dca05" name="Changes" comment="Календарь">
+       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/src/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Main.java" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/src/WindowApp.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/WindowApp.java" afterDir="false" />
+     </list>
+     <option name="SHOW_DIALOG" value="false" />
+     <option name="HIGHLIGHT_CONFLICTS" value="true" />
+@@ -54,6 +52,8 @@
+ }</component>
+   <component name="RunManager" selected="Application.Main">
+     <configuration name="Main" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
++      <option name="ALTERNATIVE_JRE_PATH" value="11" />
++      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="true" />
+       <option name="MAIN_CLASS_NAME" value="Main" />
+       <method v="2">
+         <option name="Make" enabled="true" />
+@@ -66,6 +66,10 @@
+         <option name="Make" enabled="true" />
+       </method>
+     </configuration>
++    <list>
++      <item itemvalue="Application.Main" />
++      <item itemvalue="Application.Parser" />
++    </list>
+     <recent_temporary>
+       <list>
+         <item itemvalue="Application.Main" />
+@@ -139,7 +143,14 @@
+       <option name="project" value="LOCAL" />
+       <updated>1668169272468</updated>
+     </task>
+-    <option name="localTasksCounter" value="9" />
++    <task id="LOCAL-00009" summary="Календарь">
++      <created>1668371551606</created>
++      <option name="number" value="00009" />
++      <option name="presentableId" value="LOCAL-00009" />
++      <option name="project" value="LOCAL" />
++      <updated>1668371551606</updated>
++    </task>
++    <option name="localTasksCounter" value="10" />
+     <servers />
+   </component>
+   <component name="Vcs.Log.Tabs.Properties">
+@@ -159,7 +170,8 @@
+     <MESSAGE value="Добавлен парсер погоды" />
+     <MESSAGE value="Добавлена min,max темпреатура" />
+     <MESSAGE value="Обрезан вывод до 5 дней" />
+-    <option name="LAST_COMMIT_MESSAGE" value="Обрезан вывод до 5 дней" />
++    <MESSAGE value="Календарь" />
++    <option name="LAST_COMMIT_MESSAGE" value="Календарь" />
+   </component>
+   <component name="com.intellij.coverage.CoverageDataManagerImpl">
+     <SUITE FILE_PATH="coverage/SmartMirror$Parser.ic" NAME="Parser Coverage Results" MODIFIED="1668163807775" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
