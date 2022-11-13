@@ -1,9 +1,7 @@
-import javax.swing.JFrame;
-import java.awt.*;
 import javax.swing.*;
+import java.awt.*;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
-import java.lang.Thread;
 public class WindowApp extends JFrame { //Наследуя от JFrame мы получаем всю функциональность окна
 
     Calendar calendar;
@@ -23,7 +21,6 @@ public class WindowApp extends JFrame { //Наследуя от JFrame мы по
         timeLabel = new JLabel(); //создаем лейбл под время
         timeLabel.setForeground(Color.WHITE); //делаем текст белым
         this.add(timeLabel);
-
     }
 
     public void setTime(){ // функция обновления времени
