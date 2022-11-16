@@ -3,6 +3,6 @@ public class Main {
         WindowApp app = new WindowApp(); //Создаем экземпляр нашего приложения
         app.setVisible(true); //Отображаем наше окно
         app.setTime();
-        app.weather();
+        //app.weather();
     }
 }

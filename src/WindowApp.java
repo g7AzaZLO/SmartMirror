@@ -42,10 +42,29 @@ public class WindowApp extends JFrame { //Наследуя от JFrame мы по
         this.add(timeLabel);
 
 
-        weatherLabel = new JLabel(); //создаем лейбл под погоду
-        weatherLabel.setBounds(JLabel.LEADING,JLabel.LEADING,1200,1000); //ставим лейбл ближе в центр
-        weatherLabel.setForeground(Color.WHITE); //делаем текст белым
-        this.add(weatherLabel);;//добавляем кнопку
+        String output = getUrlContent("http://api.openweathermap.org/data/2.5/weather?q=Moscow&appid=b74de8875b832c14c3e976231e043bd5&units=metric");
+        JSONObject obj = new JSONObject(output);
+        String[] qwe = {"Подробности на сегодня:",
+                "Температура: " + (format("%.1f", obj.getJSONObject("main").getDouble("temp"))) + " ℃",
+                "Ощущается: " + (format("%.1f", obj.getJSONObject("main").getDouble("feels_like"))) + " ℃" ,
+                "Максимум: " + (format("%.1f", obj.getJSONObject("main").getDouble("temp_max"))) + " ℃",
+                "Минимум: " + (format("%.1f", obj.getJSONObject("main").getDouble("temp_min"))) + " ℃",
+                "Давление: " + (format("%.1f", obj.getJSONObject("main").getInt("pressure") / 1.333)) + " мм. рт."
+        };
+
+        int x = 50;
+        int y = 50;
+        for(int i = 0; i < qwe.length; i++){
+
+            weatherLabel = new JLabel(qwe[i]);
+            weatherLabel.setBounds(x,y+i*20,1200,1000);
+            weatherLabel.setForeground(Color.WHITE); //делаем текст белым
+            this.add(weatherLabel);
+        }
+        //weatherLabel = new JLabel(); //создаем лейбл под погоду
+        //weatherLabel.setBounds(JLabel.LEADING,JLabel.LEADING,1200,1000); //ставим лейбл ближе в центр
+        //weatherLabel.setForeground(Color.WHITE); //делаем текст белым
+        //this.add(weatherLabel);//добавляем кнопку
     }
 
     public void setTime(){ // функция обновления времени
@@ -65,31 +84,41 @@ public class WindowApp extends JFrame { //Наследуя от JFrame мы по
         timeThread.start();
     }
 
-    public void weather() {
-        Thread weatherThread = new Thread() {
-            public void run() {
-                for(;;) {
-                    try{
-                        String output = getUrlContent("http://api.openweathermap.org/data/2.5/weather?q=Moscow&appid=b74de8875b832c14c3e976231e043bd5&units=metric");
-                        JSONObject obj = new JSONObject(output);
+    //public void weather() {
+    //    Thread weatherThread = new Thread() {
+    //        public void run() {
+    //            for(;;) {
+    //                try{
+    //                    String output = getUrlContent("http://api.openweathermap.org/data/2.5/weather?q=Moscow&appid=b74de8875b832c14c3e976231e043bd5&units=metric");
+    //                    JSONObject obj = new JSONObject(output);
+//
+    //                    weatherLabel.setText("Подробности на сегодня:\n" +
+    //                    "Температура: " + (format("%.1f", obj.getJSONObject("main").getDouble("temp"))) + " ℃" + "\n"+
+    //                    "Ощущается: " + (format("%.1f", obj.getJSONObject("main").getDouble("feels_like"))) + " ℃\n" +
+    //                    "Максимум: " + (format("%.1f", obj.getJSONObject("main").getDouble("temp_max"))) + " ℃\n" +
+    //                    "Минимум: " + (format("%.1f", obj.getJSONObject("main").getDouble("temp_min"))) + " ℃\n" +
+    //                    "Давление: " + (format("%.1f", obj.getJSONObject("main").getInt("pressure") / 1.333)) + " мм. рт.");
+//
+//
+    //                    sleep(100000);
+    //                }
+    //                catch (Exception e){
+    //                    e.printStackTrace();
+    //            }
+    //            }
+    //        }
+    //    };
+    //    weatherThread.start();
+    //}
 
-                        weatherLabel.setText("Подробности на сегодня:");
-                        weatherLabel.setText("Температура: " + (format("%.1f", obj.getJSONObject("main").getDouble("temp"))) + " ℃");
-                        weatherLabel.setText("Ощущается: " + (format("%.1f", obj.getJSONObject("main").getDouble("feels_like"))) + " ℃");
-                        weatherLabel.setText("Максимум: " + (format("%.1f", obj.getJSONObject("main").getDouble("temp_max"))) + " ℃");
-                        weatherLabel.setText("Минимум: " + (format("%.1f", obj.getJSONObject("main").getDouble("temp_min"))) + " ℃");
-                        weatherLabel.setText("Давление: " + (format("%.1f", obj.getJSONObject("main").getInt("pressure") / 1.333)) + " мм. рт.");
 
-                        sleep(100000);
-                    }
-                    catch (Exception e){
-                        e.printStackTrace();
-                }
-                }
-            }
-        };
-        weatherThread.start();
-    }
+       //     y= 100
+       // for(0 5){
+       //     new jlabel(s[i])
+       //             jlabel.settext[mass[i]]
+       //                     setbounds(10,y+=10)
+       //                     this.add(jlabel)
+       // }
 
 
     // Обработка URL адреса и получение данных с него
