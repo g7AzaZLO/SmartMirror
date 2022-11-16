@@ -52,19 +52,14 @@ public class WindowApp extends JFrame { //Наследуя от JFrame мы по
                 "Давление: " + (format("%.1f", obj.getJSONObject("main").getInt("pressure") / 1.333)) + " мм. рт."
         };
 
-        int x = 50;
-        int y = 50;
+        int x = 1600;
+        int y = -450;
         for(int i = 0; i < qwe.length; i++){
-
             weatherLabel = new JLabel(qwe[i]);
             weatherLabel.setBounds(x,y+i*20,1200,1000);
             weatherLabel.setForeground(Color.WHITE); //делаем текст белым
             this.add(weatherLabel);
         }
-        //weatherLabel = new JLabel(); //создаем лейбл под погоду
-        //weatherLabel.setBounds(JLabel.LEADING,JLabel.LEADING,1200,1000); //ставим лейбл ближе в центр
-        //weatherLabel.setForeground(Color.WHITE); //делаем текст белым
-        //this.add(weatherLabel);//добавляем кнопку
     }
 
     public void setTime(){ // функция обновления времени
@@ -111,14 +106,6 @@ public class WindowApp extends JFrame { //Наследуя от JFrame мы по
     //    weatherThread.start();
     //}
 
-
-       //     y= 100
-       // for(0 5){
-       //     new jlabel(s[i])
-       //             jlabel.settext[mass[i]]
-       //                     setbounds(10,y+=10)
-       //                     this.add(jlabel)
-       // }
 
 
     // Обработка URL адреса и получение данных с него
