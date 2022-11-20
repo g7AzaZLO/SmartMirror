@@ -8,6 +8,11 @@ import java.lang.Thread;
 import java.util.Date;
 import java.util.GregorianCalendar;
 import java.util.Random;
+import java.awt.image.BufferedImage;
+import java.io.File;
+import java.io.IOException;
+import javax.imageio.ImageIO;
+import javax.swing.ImageIcon;
 
 public class WindowApp extends JFrame { //Наследуя от JFrame мы получаем всю функциональность окна
     SimpleDateFormat timeFormat;
@@ -17,6 +22,11 @@ public class WindowApp extends JFrame { //Наследуя от JFrame мы по
     JLabel todayLabel;
     String time;
     JLabel frazeLabel;
+    JLabel segodnyaLabel;
+    JLabel tomorrowLabel;
+    JLabel threedayLabel;
+    JLabel fourLabel;
+    JLabel fiveLabel;
     public WindowApp(){
         super("SmartMirror"); //Заголовок окна
         this.setExtendedState(JFrame.MAXIMIZED_BOTH); //fullscreen
@@ -25,26 +35,31 @@ public class WindowApp extends JFrame { //Наследуя от JFrame мы по
         this.getContentPane().setBackground(Color.BLACK); //задний фон окна черный
         this.setResizable(false); //на всякий случай убираем возможность изменения размера окна
         this.setLayout(null); //без этого иногда не работает setBounds
-
+        Dimension size = Toolkit.getDefaultToolkit().getScreenSize(); //для получения размера экрана
+        int screensizex = ( int )size.getWidth();  // Записываем ширину экрана
+        int screensizey = (int) size.getHeight(); // Записываем высоту экрана
+        System.out.println(screensizex+" "+screensizey); // Выводим размер экрана()
 
         timeFormat = new SimpleDateFormat("HH:mm:ss"); //создаем формат времени
         timeLabel = new JLabel(); //создаем лейбл под время
         timeLabel.setForeground(Color.WHITE); //делаем текст белым
         this.add(timeLabel); //обавляем лэйб времени на экран
-        Dimension size = Toolkit.getDefaultToolkit().getScreenSize(); //для получения размера экрана
-        int screensizex = ( int )size.getWidth();  // Записываем ширину экрана
-        int screensizey = (int) size.getHeight(); // Записываем высоту экрана
-        System.out.println(screensizex+" "+screensizey); // Выводим размер экрана()
         timeLabel.setBounds(screensizex/2,screensizey/2-660,1000,400); //ставим время ближе к центру в центр
+
+
+
         frazeLabel = new JLabel(); //создаем лейбл под время
         frazeLabel.setHorizontalAlignment(JLabel.CENTER);
         CalendarLabel = new JLabel(); //создаем лейбл под дату
         this.getContentPane().setBackground(Color.BLACK); //задний фон окна черный
         frazeLabel.setBounds(screensizex/2-475,600,1000,400);
-        ////Журавлев Д.С.
+        frazeLabel.setForeground(Color.WHITE); //делаем текст белым
+        this.add(frazeLabel);
+
         this.add(CalendarLabel);;//добавляем кнопку
         CalendarLabel.setBounds(JLabel.LEADING,JLabel.LEADING-130,1000,400); //ставим календарь ближе к центру в центр
         CalendarLabel.setForeground(Color.WHITE); //делаем текст белым
+
         dataLabel = new JLabel(); //создаем лейбл под время
         dataLabel.setForeground(Color.WHITE); //делаем текст белым
         this.add(dataLabel);
@@ -53,10 +68,14 @@ public class WindowApp extends JFrame { //Наследуя от JFrame мы по
         todayLabel.setForeground(Color.GREEN); //делаем текст белым
         this.add(dataLabel);
         todayLabel.setBounds(screensizex/2-760,screensizey/2-620,1000,400); //ставим время ближе к центру в центр
-        /////
-        frazeLabel.setForeground(Color.WHITE); //делаем текст белым
-        this.add(frazeLabel);
+
+        segodnyaLabel = new JLabel(); //создаем лейбл сегодня
+        tomorrowLabel = new JLabel(); //создаем лейбл завтра
+        threedayLabel = new JLabel(); //создаем лейбл послезавтра
+        fourLabel = new JLabel(); //создаем лейбл день 4
+        fiveLabel = new JLabel(); //создаем лейбл день 5
     }
+
 
     public void fraze(){
         Thread frazeThread = new Thread(){
@@ -99,6 +118,7 @@ public class WindowApp extends JFrame { //Наследуя от JFrame мы по
         };
         clockThread.start();
     }
+
     public void data(){
         Thread dataThread = new Thread(){
             public void run(){
@@ -202,5 +222,32 @@ public class WindowApp extends JFrame { //Наследуя от JFrame мы по
             }
         };
         CalendarThread.start();
+    }
+
+    public void Weather(){
+        Thread WeatherThread = new Thread(){
+            public void run(){
+                try {
+                    for(;;){
+                        Parser parsWeather = new Parser(); // объект класса парсера
+                        textinpng tis = new textinpng();// объект класса перевода в пнг
+                        for(int i=0;i<5;i++){ // проходимся 5 раз
+                        String[] clearpog = parsWeather.weather(i); // забираем массив из парсера
+                        String pogo = clearpog[1]; //берем погоду из массива
+                        String pog = textinpng.png(pogo); // перегоняем его в название пнг файла
+                        System.out.println(pog); // вывод названия файла в консоль
+                            //вывод на экран пнг
+                        }
+
+
+                        sleep(100000);
+                    }
+                }
+                catch (Exception e){
+                    e.printStackTrace();
+                }
+            }
+        };
+        WeatherThread.start();
     }
 }
