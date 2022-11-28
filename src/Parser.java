@@ -14,7 +14,8 @@ public class Parser {
         return page;
     }
 
-    public static void main(String[] args) throws IOException{
+    public static String[] weather(int qweday) throws IOException{
+        int numDay = qweday;
         Document page = getPage(); //грузим страницу
         Element tableWeather = page.select("div[class=widget-items]").first(); //выцепляем таблицу
         Elements names =  tableWeather.select("a"); //выцепляем дни с датой
@@ -22,7 +23,6 @@ public class Parser {
         Elements weatherUnit = weather.select("div[class=row-item]");//еще урезаем табл с погодой
         Element temperature = tableWeather.select("div[class=values]").first(); //выцепляем таблицу температуры
         Elements temperatureAll = temperature.select("div[class=value style_size_m]");
-
 
         String[] weatherArray = new String[10]; //массив погоды
         int weatherCounter=0;
@@ -59,9 +59,17 @@ public class Parser {
             arrayTemperatureMin[tempMinCounter++] = temper; //добавляем в массив
         }
 
-        for(int i=0;i<5;i++){
-            System.out.println(dayArray[i]+" -> "+ weatherArray[i]+" -> "+ arrayTemperatureMax[i]+" " + arrayTemperatureMin[i]);
-        }
+        for(int i=0;i<5;i++) {
+        System.out.println(dayArray[i] + " -> " + weatherArray[i] + " -> " + arrayTemperatureMax[i] + " " + arrayTemperatureMin[i]);
+         }
+        String[] pogoda = new String[4];
+        pogoda[0] = dayArray[numDay];
+        pogoda[1] = weatherArray[numDay];
+        pogoda[2] = arrayTemperatureMin[numDay];
+        pogoda[3] = arrayTemperatureMax[numDay];
+        //String[] pogoda = dayArray[numDay]+" -> "+ weatherArray[numDay]+" -> "+ arrayTemperatureMax[numDay]+" " + arrayTemperatureMin[numDay];
+
+        return pogoda;
     }
 
 
