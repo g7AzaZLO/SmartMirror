@@ -79,35 +79,6 @@ public class WindowApp extends JFrame { //Наследуя от JFrame мы по
         timeThread.start();
     }
 
-    //public void weather() {
-    //    Thread weatherThread = new Thread() {
-    //        public void run() {
-    //            for(;;) {
-    //                try{
-    //                    String output = getUrlContent("http://api.openweathermap.org/data/2.5/weather?q=Moscow&appid=b74de8875b832c14c3e976231e043bd5&units=metric");
-    //                    JSONObject obj = new JSONObject(output);
-//
-    //                    weatherLabel.setText("Подробности на сегодня:\n" +
-    //                    "Температура: " + (format("%.1f", obj.getJSONObject("main").getDouble("temp"))) + " ℃" + "\n"+
-    //                    "Ощущается: " + (format("%.1f", obj.getJSONObject("main").getDouble("feels_like"))) + " ℃\n" +
-    //                    "Максимум: " + (format("%.1f", obj.getJSONObject("main").getDouble("temp_max"))) + " ℃\n" +
-    //                    "Минимум: " + (format("%.1f", obj.getJSONObject("main").getDouble("temp_min"))) + " ℃\n" +
-    //                    "Давление: " + (format("%.1f", obj.getJSONObject("main").getInt("pressure") / 1.333)) + " мм. рт.");
-//
-//
-    //                    sleep(100000);
-    //                }
-    //                catch (Exception e){
-    //                    e.printStackTrace();
-    //            }
-    //            }
-    //        }
-    //    };
-    //    weatherThread.start();
-    //}
-
-
-
     // Обработка URL адреса и получение данных с него
     private static String getUrlContent(String urlAdress) {
         StringBuffer content = new StringBuffer();
