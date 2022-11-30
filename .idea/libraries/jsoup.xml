@@ -6,5 +6,8 @@
     </CLASSES>
     <JAVADOC />
     <SOURCES />
+    <excluded>
+      <root url="jar://$PROJECT_DIR$/lib/jsoup-1.15.3.jar!/" />
+    </excluded>
   </library>
 </component>

@@ -1,6 +1,10 @@
 import javax.swing.JFrame;
 import java.awt.*;
 import javax.swing.*;
+import java.io.BufferedReader;
+import java.io.InputStreamReader;
+import java.net.URL;
+import java.net.URLConnection;
 import java.text.DateFormatSymbols;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
@@ -13,6 +17,10 @@ import java.io.File;
 import java.io.IOException;
 import javax.imageio.ImageIO;
 import javax.swing.ImageIcon;
+import org.json.JSONObject;
+
+import static java.lang.String.format;
+
 public class WindowApp extends JFrame { //Наследуя от JFrame мы получаем всю функциональность окна
     SimpleDateFormat timeFormat;
     JLabel timeLabel;
@@ -31,6 +39,7 @@ public class WindowApp extends JFrame { //Наследуя от JFrame мы по
     JLabel threedayLabeltext;
     JLabel fourLabeltext;
     JLabel fiveLabeltext;
+    JLabel weatherLabel;
     public WindowApp(){
         super("SmartMirror"); //Заголовок окна
         this.setExtendedState(JFrame.MAXIMIZED_BOTH); //fullscreen
@@ -106,6 +115,24 @@ public class WindowApp extends JFrame { //Наследуя от JFrame мы по
         fiveLabeltext.setForeground(Color.WHITE); //делаем текст белым
         this.add(fiveLabeltext); //обавляем лэйб времени на экран
         fiveLabeltext.setBounds(1270 ,JLabel.RIGHT+70 ,1000,400); //ставим время ближе к центру в центр
+        //////////////////
+        String output = getUrlContent("http://api.openweathermap.org/data/2.5/weather?q=Moscow&appid=b74de8875b832c14c3e976231e043bd5&units=metric");
+        JSONObject obj = new JSONObject(output);
+        String[] qwe = {"Подробности на сегодня:",
+                "Температура: " + (format("%.1f", obj.getJSONObject("main").getDouble("temp"))) + " ℃",
+                "Ощущается: " + (format("%.1f", obj.getJSONObject("main").getDouble("feels_like"))) + " ℃" ,
+                "Максимум: " + (format("%.1f", obj.getJSONObject("main").getDouble("temp_max"))) + " ℃",
+                "Минимум: " + (format("%.1f", obj.getJSONObject("main").getDouble("temp_min"))) + " ℃",
+                "Давление: " + (format("%.1f", obj.getJSONObject("main").getInt("pressure") / 1.333)) + " мм. рт."
+        };
+        int x = 1100;
+        int y = -428;
+        for(int i = 0; i < qwe.length; i++){
+            weatherLabel = new JLabel(qwe[i]);
+            weatherLabel.setBounds(x,y+i*40,1200,1000);
+            weatherLabel.setForeground(Color.WHITE); //делаем текст белым
+            this.add(weatherLabel);
+        }
     }
     public void fraze(){
         Thread frazeThread = new Thread(){
@@ -251,6 +278,25 @@ public class WindowApp extends JFrame { //Наследуя от JFrame мы по
         CalendarThread.start();
     }
 
+    private static String getUrlContent(String urlAdress) {
+        StringBuffer content = new StringBuffer();
+
+        try {
+            URL url = new URL(urlAdress);
+            URLConnection urlConn = url.openConnection();
+
+            BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(urlConn.getInputStream()));
+            String line;
+
+            while((line = bufferedReader.readLine()) != null) {
+                content.append(line + "\n");
+            }
+            bufferedReader.close();
+        } catch(Exception e) {
+            System.out.println("Ошибка!");
+        }
+        return content.toString();
+    }
     public void Weather(){
         Thread WeatherThread = new Thread(){
             public void run(){
