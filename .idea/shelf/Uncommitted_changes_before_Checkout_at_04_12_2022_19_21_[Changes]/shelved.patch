@@ -1,0 +1,357 @@
+Index: src/WindowApp.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>import javax.swing.JFrame;\r\nimport java.awt.*;\r\nimport javax.swing.*;\r\nimport java.text.DateFormatSymbols;\r\nimport java.text.SimpleDateFormat;\r\nimport java.util.Calendar;\r\nimport java.lang.Thread;\r\nimport java.util.Date;\r\nimport java.util.GregorianCalendar;\r\nimport java.util.Random;\r\nimport java.awt.image.BufferedImage;\r\nimport java.io.File;\r\nimport java.io.IOException;\r\nimport javax.imageio.ImageIO;\r\nimport javax.swing.ImageIcon;\r\npublic class WindowApp extends JFrame { //Наследуя от JFrame мы получаем всю функциональность окна\r\n    SimpleDateFormat timeFormat;\r\n    JLabel timeLabel;\r\n    JLabel CalendarLabel;\r\n    JLabel dataLabel;\r\n    JLabel todayLabel;\r\n    String time;\r\n    JLabel frazeLabel;\r\n    JLabel segodnyaLabel;\r\n    JLabel tomorrowLabel;\r\n    JLabel threedayLabel;\r\n    JLabel fourLabel;\r\n    JLabel fiveLabel;\r\n    JLabel segodnyaLabeltext;\r\n    JLabel tomorrowLabeltext;\r\n    JLabel threedayLabeltext;\r\n    JLabel fourLabeltext;\r\n    JLabel fiveLabeltext;\r\n    public WindowApp(){\r\n        super(\"SmartMirror\"); //Заголовок окна\r\n        this.setExtendedState(JFrame.MAXIMIZED_BOTH); //fullscreen\r\n        this.setUndecorated(true); //безрамочный режим\r\n        this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE); //это нужно для того чтобы при закрытии окна закрывалась и программа\r\n        this.getContentPane().setBackground(Color.BLACK); //задний фон окна черный\r\n        this.setResizable(false); //на всякий случай убираем возможность изменения размера окна\r\n        this.setLayout(null); //без этого иногда не работает setBounds\r\n        Dimension size = Toolkit.getDefaultToolkit().getScreenSize(); //для получения размера экрана\r\n        int screensizex = ( int )size.getWidth();  // Записываем ширину экрана\r\n        int screensizey = (int) size.getHeight(); // Записываем высоту экрана\r\n        System.out.println(screensizex+\" \"+screensizey); // Выводим размер экрана()\r\n        timeFormat = new SimpleDateFormat(\"HH:mm:ss\"); //создаем формат времени\r\n        timeLabel = new JLabel(); //создаем лейбл под время\r\n        timeLabel.setForeground(Color.WHITE); //делаем текст белым\r\n        this.add(timeLabel); //обавляем лэйб времени на экран\r\n        timeLabel.setBounds(screensizex/2,screensizey/2-660,1000,400); //ставим время ближе к центру в центр\r\n        frazeLabel = new JLabel(); //создаем лейбл под время\r\n        frazeLabel.setHorizontalAlignment(JLabel.CENTER);\r\n        CalendarLabel = new JLabel(); //создаем лейбл под дату\r\n        this.getContentPane().setBackground(Color.BLACK); //задний фон окна черный\r\n        frazeLabel.setBounds(screensizex/2-475,600,1000,400);\r\n        frazeLabel.setForeground(Color.WHITE); //делаем текст белым\r\n        this.add(frazeLabel);\r\n        this.add(CalendarLabel);;//добавляем кнопку\r\n        CalendarLabel.setBounds(JLabel.LEADING,JLabel.LEADING-130,1000,400); //ставим календарь ближе к центру в центр\r\n        CalendarLabel.setForeground(Color.WHITE); //делаем текст белым\r\n        dataLabel = new JLabel(); //создаем лейбл под время\r\n        dataLabel.setForeground(Color.WHITE); //делаем текст белым\r\n        this.add(dataLabel);\r\n        dataLabel.setBounds(screensizex/2-710,screensizey/2-660,1000,400); //ставим время ближе к центру в центр\r\n        /////////////////////////////////\r\n        todayLabel = new JLabel(); //создаем лейбл под время\r\n        this.add(todayLabel);\r\n        todayLabel.setBounds(1450 ,JLabel.RIGHT-130 ,1000,400); //ставим время ближе к центру в центр\r\n        //////////////////////////\r\n        segodnyaLabel = new JLabel(); //создаем лейбл сегодня\r\n        segodnyaLabeltext = new JLabel(); //создаем лейбл сегодня\r\n        segodnyaLabeltext.setForeground(Color.WHITE); //делаем текст белым\r\n        this.add(segodnyaLabel ); //обавляем лэйб времени на экран\r\n        this.add(segodnyaLabeltext ); //обавляем лэйб времени на экран\r\n        segodnyaLabel .setBounds(1390 ,JLabel.RIGHT-130 ,1000,400); ; //ставим время ближе к центру в центр\r\n        segodnyaLabeltext .setBounds(1270 ,JLabel.RIGHT-130 ,1000,400); ; //ставим время ближе к центру в центр\r\n        //////////////////////\r\n        tomorrowLabel = new JLabel(); //создаем лейбл завтра\r\n        this.add( tomorrowLabel); //обавляем лэйб времени на экран\r\n        tomorrowLabel.setBounds(1390 ,JLabel.RIGHT-80 ,1000,400); //ставим время ближе к центру в центр\r\n        tomorrowLabeltext = new JLabel(); //создаем лейбл завтра\r\n        tomorrowLabeltext.setForeground(Color.WHITE); //делаем текст белым\r\n        this.add( tomorrowLabeltext); //обавляем лэйб времени на экран\r\n        tomorrowLabeltext.setBounds(1270 ,JLabel.RIGHT-80 ,1000,400); //ставим время ближе к центру в центр\r\n        ///////////////////////\r\n        threedayLabel = new JLabel(); //создаем лейбл послезавтра\r\n        this.add(threedayLabel); //обавляем лэйб времени на экран\r\n        threedayLabel.setBounds(1390 ,JLabel.RIGHT-30 ,1000,400); //ставим время ближе к центру в центр\r\n        threedayLabeltext = new JLabel(); //создаем лейбл послезавтра\r\n        threedayLabeltext.setForeground(Color.WHITE); //делаем текст белым\r\n        this.add(threedayLabeltext); //обавляем лэйб времени на экран\r\n        threedayLabeltext.setBounds(1270 ,JLabel.RIGHT-30 ,1000,400); //ставим время ближе к центру в центр\r\n        ////////////////////////////\r\n        fourLabel = new JLabel(); //создаем лейбл день 4\r\n        this.add(fourLabel); //обавляем лэйб времени на экран\r\n        fourLabel.setBounds(1390 ,JLabel.RIGHT+20 ,1000,400); //ставим время ближе к центру в центр\r\n        fourLabeltext = new JLabel(); //создаем лейбл день 4\r\n        fourLabeltext.setForeground(Color.WHITE); //делаем текст белым\r\n        this.add(fourLabeltext); //обавляем лэйб времени на экран\r\n        fourLabeltext.setBounds(1270 ,JLabel.RIGHT+20 ,1000,400); //ставим время ближе к центру в центр\r\n        //////////////////\r\n        fiveLabel = new JLabel(); //создаем лейбл день 5\r\n        this.add(fiveLabel); //обавляем лэйб времени на экран\r\n        fiveLabel.setBounds(1390 ,JLabel.RIGHT+70 ,1000,400); //ставим время ближе к центру в центр\r\n        fiveLabeltext = new JLabel(); //создаем лейбл день 5\r\n        fiveLabeltext.setForeground(Color.WHITE); //делаем текст белым\r\n        this.add(fiveLabeltext); //обавляем лэйб времени на экран\r\n        fiveLabeltext.setBounds(1270 ,JLabel.RIGHT+70 ,1000,400); //ставим время ближе к центру в центр\r\n    }\r\n    public void fraze(){\r\n        Thread frazeThread = new Thread(){\r\n            public void run(){\r\n                try {\r\n                    for(;;){\r\n                        String[] frazeList = {\r\n                                \"Прекрасно выглядишь\",\r\n                                \"Как прошел твой день?\",\r\n                                \"Хорошего дня!\"\r\n                        };\r\n                        int rnd = new Random().nextInt(frazeList.length);\r\n                        String fraze = frazeList[rnd];\r\n                        frazeLabel.setText(fraze); //устанавливаем в наш лейбл сам текст\r\n                        sleep(10000);\r\n                    }\r\n                }\r\n                catch (Exception e){\r\n                    e.printStackTrace();\r\n                }\r\n            }\r\n        };\r\n        frazeThread.start();\r\n    }\r\n    public void clock(){\r\n        Thread clockThread = new Thread(){\r\n            public void run(){\r\n                try {\r\n                    for(;;){\r\n                        time = timeFormat.format(Calendar.getInstance().getTime()); //парсим время\r\n                        timeLabel.setText(time); //устанавливаем в наш лейбл сам текст\r\n                        sleep(1000);\r\n                    }\r\n                }\r\n                catch (Exception e){\r\n                    e.printStackTrace();\r\n                }\r\n            }\r\n        };\r\n        clockThread.start();\r\n    }\r\n    public void data(){\r\n        Thread dataThread = new Thread(){\r\n            public void run(){\r\n                try {\r\n                    for(;;){\r\n                        SimpleDateFormat formatter= new SimpleDateFormat(\"dd-MM-yyyy\");\r\n                        Date date = new Date();\r\n                        dataLabel.setText(\"Текущая дата:  \" + formatter.format(date)); //устанавливаем в наш лейбл сам текст\r\n                        sleep(100000);\r\n                    }\r\n                }\r\n                catch (Exception e){\r\n                    e.printStackTrace();\r\n                }\r\n            }\r\n        };\r\n        dataThread.start();\r\n    }\r\n    public void Calendar(){\r\n        Thread CalendarThread = new Thread(){\r\n            public void run(){\r\n                try {\r\n                    for(;;){\r\n                        String A=\"<html>\";\r\n                        String c=\"&nbsp \";\r\n                        int schetchikprobelov=0;\r\n                        int schetchiknovoystroki=0;\r\n                        boolean fl=true;\r\n                        // construct d as current date\r\n                        GregorianCalendar d = new GregorianCalendar();\r\n\r\n                        int today = d.get(Calendar.DAY_OF_MONTH);\r\n                        int month = d.get(Calendar.MONTH);\r\n\r\n                        // set d to start date of the month\r\n                        d.set(Calendar.DAY_OF_MONTH, 1);\r\n\r\n                        int weekday = d.get(Calendar.DAY_OF_WEEK);\r\n\r\n                        // get first day of week (Sunday in the U.S.)\r\n                        int firstDayOfWeek = d.getFirstDayOfWeek();\r\n\r\n                        // determine the required indentation for the first line\r\n                        int indent = 0;\r\n                        while (weekday != firstDayOfWeek)\r\n                        {\r\n                            indent++;\r\n                            d.add(Calendar.DAY_OF_MONTH, -1);\r\n                            weekday = d.get(Calendar.DAY_OF_WEEK);\r\n                        }\r\n\r\n                        // print weekday names\r\n                        String[] weekdayNames = new DateFormatSymbols().getShortWeekdays();\r\n                        do\r\n                        {\r\n                            A+=weekdayNames[weekday];A+=c;A+=c;\r\n                            d.add(Calendar.DAY_OF_MONTH, 1);\r\n                            weekday = d.get(Calendar.DAY_OF_WEEK);\r\n                        }\r\n                        while (weekday != firstDayOfWeek);\r\n                        A+=\"<br>\";\r\n\r\n                        for (int i = 1; i <= indent; i++) {\r\n                            A+=c;A+=c;A+=c;A+=c;\r\n                        }\r\n\r\n                        d.set(Calendar.DAY_OF_MONTH, 1);\r\n                        do\r\n                        {\r\n                            // print day\r\n                            int day = d.get(Calendar.DAY_OF_MONTH);\r\n                            int day1=day;\r\n                            if(day1/10==0){if (day == today){A+=\"<font bgcolor=red>\";A+=today;A+=\"</font>\";}else A+=day;A+=c;A+=c;if(fl==true)schetchikprobelov+=4;}\r\n                            else\r\n                            if(day1/100==0){if (day == today){A+=\"<font bgcolor=red>\";A+=today;A+=\"</font>\";}else A+=day;A+=c;if(fl==true)schetchikprobelov+=2;}\r\n                            // mark current day with *\r\n                            if (day == today){A+=c;}\r\n                            else{A+=c;}\r\n\r\n                            // advance d to the next day\r\n                            d.add(Calendar.DAY_OF_MONTH, 1);\r\n                            weekday = d.get(Calendar.DAY_OF_WEEK);\r\n\r\n                            // start a new line at the start of the week\r\n                            if (weekday == firstDayOfWeek){A+=\"<br>\";if(fl==true)schetchiknovoystroki+=1;}\r\n                        }\r\n                        while (d.get(Calendar.MONTH) == month);\r\n                        // the loop exits when d is day 1 of the next month\r\n\r\n                        // print final end of line if necessary\r\n                        if (weekday != firstDayOfWeek){A+=\"<br>\";}\r\n                        A+=\"<html>\";\r\n                        CalendarLabel.setText(A); //устанавливаем в наш лейбл сам текст\r\n                        sleep(100000);\r\n                    }\r\n                }\r\n                catch (Exception e){\r\n                    e.printStackTrace();\r\n                }\r\n            }\r\n        };\r\n        CalendarThread.start();\r\n    }\r\n\r\n    public void Weather(){\r\n        Thread WeatherThread = new Thread(){\r\n            public void run(){\r\n                try {\r\n                    for(;;){\r\n                        String pog,pogo;\r\n                        Parser parsWeather = new Parser(); // объект класса парсера\r\n                        textinpng tis = new textinpng();// объект класса перевода в пнг\r\n                        for(int i=0;i<5;i++){ // проходимся 5 раз\r\n                            String[] clearpog = parsWeather.weather(i); // забираем массив из парсера\r\n                            if(i==0) {\r\n                                pogo = clearpog[1]; //берем погоду из массива+\r\n                                segodnyaLabeltext.setText(clearpog[0] +\"   \"+ clearpog[2]+ \"   \" + clearpog[3]); //устанавливаем в наш лейбл сам текст\r\n                                pog = textinpng.png(pogo); // перегоняем его в название пнг файла\r\n                                segodnyaLabel.setIcon(new ImageIcon(pog));\r\n                            }\r\n                            if(i==1) {\r\n                                pogo = clearpog[1]; //берем погоду из массива\r\n                                tomorrowLabeltext.setText(clearpog[0] +\"   \"+ clearpog[2]+ \"   \" + clearpog[3]); //устанавливаем в наш лейбл сам текст\r\n                                pog = textinpng.png(pogo); // перегоняем его в название пнг файла\r\n                                tomorrowLabel.setIcon(new ImageIcon(pog));\r\n                            }\r\n                            if(i==2) {\r\n                                pogo = clearpog[1]; //берем погоду из массива\r\n                                threedayLabeltext.setText(clearpog[0] +\"   \"+ clearpog[2]+ \"   \" + clearpog[3]); //устанавливаем в наш лейбл сам текст\r\n                                pog = textinpng.png(pogo); // перегоняем его в название пнг файла\r\n                                threedayLabel.setIcon(new ImageIcon(pog));\r\n                            }\r\n                            if(i==3) {\r\n                                pogo = clearpog[1]; //берем погоду из массива\r\n                                fourLabeltext.setText(clearpog[0] +\"   \"+ clearpog[2]+ \"   \" + clearpog[3]); //устанавливаем в наш лейбл сам текст\r\n                                pog = textinpng.png(pogo); // перегоняем его в название пнг файла\r\n                                fourLabel.setIcon(new ImageIcon(pog));\r\n                            }\r\n                            if(i==4) {\r\n                                pogo = clearpog[1]; //берем погоду из массива\r\n                                fiveLabeltext.setText(clearpog[0] +\"   \"+ clearpog[2]+ \"   \" + clearpog[3]); //устанавливаем в наш лейбл сам текст\r\n                                pog = textinpng.png(pogo); // перегоняем его в название пнг файла\r\n                                fiveLabel.setIcon(new ImageIcon(pog));\r\n                            }\r\n                        }\r\n                        sleep(1000000);\r\n                    }\r\n                }\r\n                catch (Exception e){\r\n                    e.printStackTrace();\r\n                }\r\n            }\r\n        };\r\n        WeatherThread.start();\r\n    }\r\n}
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/WindowApp.java b/src/WindowApp.java
+--- a/src/WindowApp.java	(revision 7dd7418d1de728cdcaad18ab01e2d7c67f5d75e0)
++++ b/src/WindowApp.java	(date 1670170875665)
+@@ -1,6 +1,9 @@
+ import javax.swing.JFrame;
+ import java.awt.*;
+ import javax.swing.*;
++import java.awt.GraphicsEnvironment;
++import java.io.File;
++import java.io.IOException;
+ import java.text.DateFormatSymbols;
+ import java.text.SimpleDateFormat;
+ import java.util.Calendar;
+@@ -8,10 +11,6 @@
+ import java.util.Date;
+ import java.util.GregorianCalendar;
+ import java.util.Random;
+-import java.awt.image.BufferedImage;
+-import java.io.File;
+-import java.io.IOException;
+-import javax.imageio.ImageIO;
+ import javax.swing.ImageIcon;
+ public class WindowApp extends JFrame { //Наследуя от JFrame мы получаем всю функциональность окна
+     SimpleDateFormat timeFormat;
+@@ -43,23 +42,43 @@
+         int screensizex = ( int )size.getWidth();  // Записываем ширину экрана
+         int screensizey = (int) size.getHeight(); // Записываем высоту экрана
+         System.out.println(screensizex+" "+screensizey); // Выводим размер экрана()
++
++        GraphicsEnvironment ge = GraphicsEnvironment.getLocalGraphicsEnvironment();
++        try {
++            ge.registerFont(Font.createFont(Font.TRUETYPE_FONT, new File("font\\FesterExtraLight.otf")));
++        } catch (FontFormatException e) {
++            throw new RuntimeException(e);
++        } catch (IOException e) {
++            throw new RuntimeException(e);
++        }
++
++        Font mainFont = new Font("Fester ExtraLight",Font.PLAIN, 24);
++        Font calendarFont = new Font("Fester ExtraLight",Font.PLAIN, 20);
++        Font frazeFont = new Font("Fester ExtraLight",Font.PLAIN, 36);
++        Font timeFont = new Font("Fester ExtraLight",Font.PLAIN, 38);
++
++
+         timeFormat = new SimpleDateFormat("HH:mm:ss"); //создаем формат времени
+         timeLabel = new JLabel(); //создаем лейбл под время
+         timeLabel.setForeground(Color.WHITE); //делаем текст белым
++        timeLabel.setFont(timeFont);
+         this.add(timeLabel); //обавляем лэйб времени на экран
+-        timeLabel.setBounds(screensizex/2,screensizey/2-660,1000,400); //ставим время ближе к центру в центр
++        timeLabel.setBounds(screensizex/2-80,screensizey/2-660,1000,400); //ставим время ближе к центру в центр
+         frazeLabel = new JLabel(); //создаем лейбл под время
+         frazeLabel.setHorizontalAlignment(JLabel.CENTER);
+         CalendarLabel = new JLabel(); //создаем лейбл под дату
+         this.getContentPane().setBackground(Color.BLACK); //задний фон окна черный
+         frazeLabel.setBounds(screensizex/2-475,600,1000,400);
+         frazeLabel.setForeground(Color.WHITE); //делаем текст белым
++        frazeLabel.setFont(frazeFont);
+         this.add(frazeLabel);
+-        this.add(CalendarLabel);;//добавляем кнопку
+-        CalendarLabel.setBounds(JLabel.LEADING,JLabel.LEADING-130,1000,400); //ставим календарь ближе к центру в центр
++        this.add(CalendarLabel);//добавляем кнопку
++        CalendarLabel.setBounds(JLabel.LEADING,JLabel.LEADING-90,1000,400); //ставим календарь ближе к центру в центр
+         CalendarLabel.setForeground(Color.WHITE); //делаем текст белым
++        CalendarLabel.setFont(calendarFont);
+         dataLabel = new JLabel(); //создаем лейбл под время
+         dataLabel.setForeground(Color.WHITE); //делаем текст белым
++        dataLabel.setFont(mainFont);
+         this.add(dataLabel);
+         dataLabel.setBounds(screensizex/2-710,screensizey/2-660,1000,400); //ставим время ближе к центру в центр
+         /////////////////////////////////
+@@ -69,43 +88,48 @@
+         //////////////////////////
+         segodnyaLabel = new JLabel(); //создаем лейбл сегодня
+         segodnyaLabeltext = new JLabel(); //создаем лейбл сегодня
+-        segodnyaLabeltext.setForeground(Color.WHITE); //делаем текст белым
++        segodnyaLabeltext.setForeground(Color.GRAY); //делаем текст белым
++        segodnyaLabeltext.setFont(calendarFont);
+         this.add(segodnyaLabel ); //обавляем лэйб времени на экран
+         this.add(segodnyaLabeltext ); //обавляем лэйб времени на экран
+-        segodnyaLabel .setBounds(1390 ,JLabel.RIGHT-130 ,1000,400); ; //ставим время ближе к центру в центр
+-        segodnyaLabeltext .setBounds(1270 ,JLabel.RIGHT-130 ,1000,400); ; //ставим время ближе к центру в центр
++        segodnyaLabel .setBounds(1390 ,JLabel.RIGHT-130 ,1000,400); //ставим время ближе к центру в центр
++        segodnyaLabeltext .setBounds(1210 ,JLabel.RIGHT-130 ,1000,400); //ставим время ближе к центру в центр
+         //////////////////////
+         tomorrowLabel = new JLabel(); //создаем лейбл завтра
+         this.add( tomorrowLabel); //обавляем лэйб времени на экран
+         tomorrowLabel.setBounds(1390 ,JLabel.RIGHT-80 ,1000,400); //ставим время ближе к центру в центр
+         tomorrowLabeltext = new JLabel(); //создаем лейбл завтра
+         tomorrowLabeltext.setForeground(Color.WHITE); //делаем текст белым
++        tomorrowLabeltext.setFont(calendarFont);
+         this.add( tomorrowLabeltext); //обавляем лэйб времени на экран
+-        tomorrowLabeltext.setBounds(1270 ,JLabel.RIGHT-80 ,1000,400); //ставим время ближе к центру в центр
++        tomorrowLabeltext.setBounds(1210 ,JLabel.RIGHT-80 ,1000,400); //ставим время ближе к центру в центр
+         ///////////////////////
+         threedayLabel = new JLabel(); //создаем лейбл послезавтра
+         this.add(threedayLabel); //обавляем лэйб времени на экран
+         threedayLabel.setBounds(1390 ,JLabel.RIGHT-30 ,1000,400); //ставим время ближе к центру в центр
+         threedayLabeltext = new JLabel(); //создаем лейбл послезавтра
+         threedayLabeltext.setForeground(Color.WHITE); //делаем текст белым
++        threedayLabeltext.setFont(calendarFont);
+         this.add(threedayLabeltext); //обавляем лэйб времени на экран
+-        threedayLabeltext.setBounds(1270 ,JLabel.RIGHT-30 ,1000,400); //ставим время ближе к центру в центр
++        threedayLabeltext.setBounds(1210 ,JLabel.RIGHT-30 ,1000,400); //ставим время ближе к центру в центр
+         ////////////////////////////
+         fourLabel = new JLabel(); //создаем лейбл день 4
+         this.add(fourLabel); //обавляем лэйб времени на экран
+         fourLabel.setBounds(1390 ,JLabel.RIGHT+20 ,1000,400); //ставим время ближе к центру в центр
+         fourLabeltext = new JLabel(); //создаем лейбл день 4
+         fourLabeltext.setForeground(Color.WHITE); //делаем текст белым
++        fourLabeltext.setFont(calendarFont);
+         this.add(fourLabeltext); //обавляем лэйб времени на экран
+-        fourLabeltext.setBounds(1270 ,JLabel.RIGHT+20 ,1000,400); //ставим время ближе к центру в центр
++        fourLabeltext.setBounds(1210 ,JLabel.RIGHT+20 ,1000,400); //ставим время ближе к центру в центр
+         //////////////////
+         fiveLabel = new JLabel(); //создаем лейбл день 5
+         this.add(fiveLabel); //обавляем лэйб времени на экран
+         fiveLabel.setBounds(1390 ,JLabel.RIGHT+70 ,1000,400); //ставим время ближе к центру в центр
+         fiveLabeltext = new JLabel(); //создаем лейбл день 5
+         fiveLabeltext.setForeground(Color.WHITE); //делаем текст белым
++        fiveLabeltext.setFont(calendarFont);
+         this.add(fiveLabeltext); //обавляем лэйб времени на экран
+-        fiveLabeltext.setBounds(1270 ,JLabel.RIGHT+70 ,1000,400); //ставим время ближе к центру в центр
++        fiveLabeltext.setBounds(1210 ,JLabel.RIGHT+70 ,1000,400); //ставим время ближе к центру в центр
+     }
+     public void fraze(){
+         Thread frazeThread = new Thread(){
+@@ -120,7 +144,7 @@
+                         int rnd = new Random().nextInt(frazeList.length);
+                         String fraze = frazeList[rnd];
+                         frazeLabel.setText(fraze); //устанавливаем в наш лейбл сам текст
+-                        sleep(10000);
++                        sleep(100000);
+                     }
+                 }
+                 catch (Exception e){
+@@ -155,7 +179,7 @@
+                         SimpleDateFormat formatter= new SimpleDateFormat("dd-MM-yyyy");
+                         Date date = new Date();
+                         dataLabel.setText("Текущая дата:  " + formatter.format(date)); //устанавливаем в наш лейбл сам текст
+-                        sleep(100000);
++                        sleep(900000);
+                     }
+                 }
+                 catch (Exception e){
+@@ -172,6 +196,12 @@
+                     for(;;){
+                         String A="<html>";
+                         String c="&nbsp ";
++                        String c2="&nbsp &nbsp ";
++                        String c3="&nbsp&thinsp &thinsp";
++                        String c4=" &nbsp &nbsp";
++                        String c5=" &nbsp &thinsp ";
++                        String c6="&nbsp &thinsp ";
++                        String c7="&nbsp &thinsp&thinsp&thinsp&thinsp";
+                         int schetchikprobelov=0;
+                         int schetchiknovoystroki=0;
+                         boolean fl=true;
+@@ -202,7 +232,7 @@
+                         String[] weekdayNames = new DateFormatSymbols().getShortWeekdays();
+                         do
+                         {
+-                            A+=weekdayNames[weekday];A+=c;A+=c;
++                            A+=weekdayNames[weekday];A+=c7;
+                             d.add(Calendar.DAY_OF_MONTH, 1);
+                             weekday = d.get(Calendar.DAY_OF_WEEK);
+                         }
+@@ -210,7 +240,7 @@
+                         A+="<br>";
+ 
+                         for (int i = 1; i <= indent; i++) {
+-                            A+=c;A+=c;A+=c;A+=c;
++                            A+=c5;A+=c5;
+                         }
+ 
+                         d.set(Calendar.DAY_OF_MONTH, 1);
+@@ -219,11 +249,11 @@
+                             // print day
+                             int day = d.get(Calendar.DAY_OF_MONTH);
+                             int day1=day;
+-                            if(day1/10==0){if (day == today){A+="<font bgcolor=red>";A+=today;A+="</font>";}else A+=day;A+=c;A+=c;if(fl==true)schetchikprobelov+=4;}
++                            if(day1/10==0){if (day == today){A+="<font bgcolor=red>";A+=today;A+="</font>";}else{ A+=day;A+=c3;}if(fl==true)schetchikprobelov+=4;}
+                             else
+-                            if(day1/100==0){if (day == today){A+="<font bgcolor=red>";A+=today;A+="</font>";}else A+=day;A+=c;if(fl==true)schetchikprobelov+=2;}
++                            if(day1/100==0){if (day == today){A+="<font bgcolor=red>";A+=today;A+="</font>";}else{ A+=day;A+=c;}if(fl==true)schetchikprobelov+=2;}
+                             // mark current day with *
+-                            if (day == today){A+=c;}
++                            if (day == today){A+=c;A+=c6;}
+                             else{A+=c;}
+ 
+                             // advance d to the next day
+@@ -240,7 +270,7 @@
+                         if (weekday != firstDayOfWeek){A+="<br>";}
+                         A+="<html>";
+                         CalendarLabel.setText(A); //устанавливаем в наш лейбл сам текст
+-                        sleep(100000);
++                        sleep(900000);
+                     }
+                 }
+                 catch (Exception e){
+@@ -292,7 +322,7 @@
+                                 fiveLabel.setIcon(new ImageIcon(pog));
+                             }
+                         }
+-                        sleep(1000000);
++                        sleep(1800000);
+                     }
+                 }
+                 catch (Exception e){
+Index: .idea/workspace.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+><?xml version=\"1.0\" encoding=\"UTF-8\"?>\r\n<project version=\"4\">\r\n  <component name=\"AutoImportSettings\">\r\n    <option name=\"autoReloadType\" value=\"SELECTIVE\" />\r\n  </component>\r\n  <component name=\"ChangeListManager\">\r\n    <list default=\"true\" id=\"43d7158a-dc04-420b-8992-71886501b65e\" name=\"Changes\" comment=\"очередной фикс мержа\">\r\n      <change beforePath=\"$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_14_11_2022_1_14_[Changes]/Main.class\" beforeDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_14_11_2022_1_14_[Changes]/shelved.patch\" beforeDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_14_11_2022_1_14__Changes_.xml\" beforeDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_14_11_2022_1_15_[Changes]1/shelved.patch\" beforeDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_14_11_2022_1_15__Changes_1.xml\" beforeDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/.idea/workspace.xml\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/.idea/workspace.xml\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/out/production/SmartMirror/Parser.class\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/out/production/SmartMirror/Parser.class\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/out/production/SmartMirror/WindowApp$1.class\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/out/production/SmartMirror/WindowApp$1.class\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/out/production/SmartMirror/WindowApp$2.class\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/out/production/SmartMirror/WindowApp$2.class\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/out/production/SmartMirror/WindowApp$3.class\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/out/production/SmartMirror/WindowApp$3.class\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/out/production/SmartMirror/WindowApp$4.class\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/out/production/SmartMirror/WindowApp$4.class\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/out/production/SmartMirror/WindowApp$5.class\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/out/production/SmartMirror/WindowApp$5.class\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/out/production/SmartMirror/WindowApp.class\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/out/production/SmartMirror/WindowApp.class\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/out/production/SmartMirror/textinpng.class\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/out/production/SmartMirror/textinpng.class\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/src/Parser.java\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/src/Parser.java\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/src/WindowApp.java\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/src/WindowApp.java\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/src/textinpng.java\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/src/textinpng.java\" afterDir=\"false\" />\r\n    </list>\r\n    <option name=\"SHOW_DIALOG\" value=\"false\" />\r\n    <option name=\"HIGHLIGHT_CONFLICTS\" value=\"true\" />\r\n    <option name=\"HIGHLIGHT_NON_ACTIVE_CHANGELIST\" value=\"false\" />\r\n    <option name=\"LAST_RESOLUTION\" value=\"IGNORE\" />\r\n  </component>\r\n  <component name=\"FileTemplateManagerImpl\">\r\n    <option name=\"RECENT_TEMPLATES\">\r\n      <list>\r\n        <option value=\"Class\" />\r\n      </list>\r\n    </option>\r\n  </component>\r\n  <component name=\"Git.Settings\">\r\n    <option name=\"RECENT_BRANCH_BY_REPOSITORY\">\r\n      <map>\r\n        <entry key=\"$PROJECT_DIR$\" value=\"main\" />\r\n      </map>\r\n    </option>\r\n    <option name=\"RECENT_GIT_ROOT_PATH\" value=\"$PROJECT_DIR$\" />\r\n  </component>\r\n  <component name=\"MarkdownSettingsMigration\">\r\n    <option name=\"stateVersion\" value=\"1\" />\r\n  </component>\r\n  <component name=\"ProjectId\" id=\"2HVZ1m3AimI2vKd5zXfNWcf07lF\" />\r\n  <component name=\"ProjectViewState\">\r\n    <option name=\"hideEmptyMiddlePackages\" value=\"true\" />\r\n    <option name=\"showLibraryContents\" value=\"true\" />\r\n  </component>\r\n  <component name=\"PropertiesComponent\">{\r\n  &quot;keyToString&quot;: {\r\n    &quot;Downloaded.Files.Path.Enabled&quot;: &quot;true&quot;,\r\n    &quot;Repository.Attach.Annotations&quot;: &quot;false&quot;,\r\n    &quot;Repository.Attach.JavaDocs&quot;: &quot;false&quot;,\r\n    &quot;Repository.Attach.Sources&quot;: &quot;false&quot;,\r\n    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,\r\n    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,\r\n    &quot;project.structure.last.edited&quot;: &quot;Libraries&quot;,\r\n    &quot;project.structure.proportion&quot;: &quot;0.0&quot;,\r\n    &quot;project.structure.side.proportion&quot;: &quot;0.2&quot;\r\n  }\r\n}</component>\r\n  <component name=\"RunManager\" selected=\"Application.Main\">\r\n    <configuration name=\"Main\" type=\"Application\" factoryName=\"Application\" temporary=\"true\" nameIsGenerated=\"true\">\r\n      <option name=\"MAIN_CLASS_NAME\" value=\"Main\" />\r\n      <module name=\"SmartMirror\" />\r\n      <extension name=\"coverage\">\r\n        <pattern>\r\n          <option name=\"PATTERN\" value=\"SmartMirror.*\" />\r\n          <option name=\"ENABLED\" value=\"true\" />\r\n        </pattern>\r\n      </extension>\r\n      <method v=\"2\">\r\n        <option name=\"Make\" enabled=\"true\" />\r\n      </method>\r\n    </configuration>\r\n    <configuration name=\"Parser\" type=\"Application\" factoryName=\"Application\" temporary=\"true\" nameIsGenerated=\"true\">\r\n      <option name=\"MAIN_CLASS_NAME\" value=\"Parser\" />\r\n      <module name=\"SmartMirror\" />\r\n      <method v=\"2\">\r\n        <option name=\"Make\" enabled=\"true\" />\r\n      </method>\r\n    </configuration>\r\n    <recent_temporary>\r\n      <list>\r\n        <item itemvalue=\"Application.Main\" />\r\n        <item itemvalue=\"Application.Parser\" />\r\n        <item itemvalue=\"Application.Parser\" />\r\n        <item itemvalue=\"Application.Main\" />\r\n      </list>\r\n    </recent_temporary>\r\n  </component>\r\n  <component name=\"SpellCheckerSettings\" RuntimeDictionaries=\"0\" Folders=\"0\" CustomDictionaries=\"0\" DefaultDictionary=\"application-level\" UseSingleDictionary=\"true\" transferred=\"true\" />\r\n  <component name=\"TaskManager\">\r\n    <task active=\"true\" id=\"Default\" summary=\"Default task\">\r\n      <changelist id=\"43d7158a-dc04-420b-8992-71886501b65e\" name=\"Changes\" comment=\"\" />\r\n      <created>1668371998164</created>\r\n      <option name=\"number\" value=\"Default\" />\r\n      <option name=\"presentableId\" value=\"Default\" />\r\n      <updated>1668371998164</updated>\r\n    </task>\r\n    <servers />\r\n  </component>\r\n  <component name=\"Vcs.Log.Tabs.Properties\">\r\n    <option name=\"TAB_STATES\">\r\n      <map>\r\n        <entry key=\"MAIN\">\r\n          <value>\r\n            <State />\r\n          </value>\r\n        </entry>\r\n      </map>\r\n    </option>\r\n  </component>\r\n  <component name=\"com.intellij.coverage.CoverageDataManagerImpl\">\r\n    <SUITE FILE_PATH=\"coverage/SmartMirror$Parser.ic\" NAME=\"Parser Coverage Results\" MODIFIED=\"1668163807775\" SOURCE_PROVIDER=\"com.intellij.coverage.DefaultCoverageFileProvider\" RUNNER=\"idea\" COVERAGE_BY_TEST_ENABLED=\"false\" COVERAGE_TRACING_ENABLED=\"false\" />\r\n    <SUITE FILE_PATH=\"coverage/SmartMirror$Main.ic\" NAME=\"Main Coverage Results\" MODIFIED=\"1668028577093\" SOURCE_PROVIDER=\"com.intellij.coverage.DefaultCoverageFileProvider\" RUNNER=\"idea\" COVERAGE_BY_TEST_ENABLED=\"false\" COVERAGE_TRACING_ENABLED=\"false\" />\r\n  </component>\r\n</project>
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/.idea/workspace.xml b/.idea/workspace.xml
+--- a/.idea/workspace.xml	(revision 7dd7418d1de728cdcaad18ab01e2d7c67f5d75e0)
++++ b/.idea/workspace.xml	(date 1670170875598)
+@@ -4,24 +4,29 @@
+     <option name="autoReloadType" value="SELECTIVE" />
+   </component>
+   <component name="ChangeListManager">
+-    <list default="true" id="43d7158a-dc04-420b-8992-71886501b65e" name="Changes" comment="очередной фикс мержа">
+-      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_14_11_2022_1_14_[Changes]/Main.class" beforeDir="false" />
+-      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_14_11_2022_1_14_[Changes]/shelved.patch" beforeDir="false" />
+-      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_14_11_2022_1_14__Changes_.xml" beforeDir="false" />
+-      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_14_11_2022_1_15_[Changes]1/shelved.patch" beforeDir="false" />
+-      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_14_11_2022_1_15__Changes_1.xml" beforeDir="false" />
++    <list default="true" id="43d7158a-dc04-420b-8992-71886501b65e" name="Changes" comment="Add +1 icon, new font">
++      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_13_11_2022_23_36__Changes_.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_13_11_2022_23_36__Changes_.xml" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_14_11_2022_1_15__Changes_.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_14_11_2022_1_15__Changes_.xml" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_27_11_2022_1_42_[Changes]/shelved.patch" beforeDir="false" />
++      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_27_11_2022_1_42__Changes_.xml" beforeDir="false" />
++      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_28_11_2022_15_58__Changes_.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_28_11_2022_15_58__Changes_.xml" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_30_11_2022_13_12__Changes_.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_30_11_2022_13_12__Changes_.xml" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_30_11_2022_13_13__Changes_.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_30_11_2022_13_13__Changes_.xml" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_30_11_2022_13_14__Changes_.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_30_11_2022_13_14__Changes_.xml" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_30_11_2022_13_23__Changes_.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_30_11_2022_13_23__Changes_.xml" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_30_11_2022_13_14__Changes_.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_30_11_2022_13_14__Changes_.xml" afterDir="false" />
+       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/out/production/SmartMirror/Parser.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/SmartMirror/Parser.class" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/out/production/SmartMirror/WindowApp$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/SmartMirror/WindowApp$1.class" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/out/production/SmartMirror/WindowApp$2.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/SmartMirror/WindowApp$2.class" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/out/production/SmartMirror/WindowApp$3.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/SmartMirror/WindowApp$3.class" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/out/production/SmartMirror/WindowApp$4.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/SmartMirror/WindowApp$4.class" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/out/production/SmartMirror/WindowApp$5.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/SmartMirror/WindowApp$5.class" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/out/production/SmartMirror/WindowApp.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/SmartMirror/WindowApp.class" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/out/production/SmartMirror/textinpng.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/SmartMirror/textinpng.class" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/src/Parser.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Parser.java" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/out/production/SmartMirror/Main.class" beforeDir="false" />
++      <change beforePath="$PROJECT_DIR$/out/production/SmartMirror/Parser.class" beforeDir="false" />
++      <change beforePath="$PROJECT_DIR$/out/production/SmartMirror/WindowApp$1.class" beforeDir="false" />
++      <change beforePath="$PROJECT_DIR$/out/production/SmartMirror/WindowApp$2.class" beforeDir="false" />
++      <change beforePath="$PROJECT_DIR$/out/production/SmartMirror/WindowApp$3.class" beforeDir="false" />
++      <change beforePath="$PROJECT_DIR$/out/production/SmartMirror/WindowApp$4.class" beforeDir="false" />
++      <change beforePath="$PROJECT_DIR$/out/production/SmartMirror/WindowApp$5.class" beforeDir="false" />
++      <change beforePath="$PROJECT_DIR$/out/production/SmartMirror/WindowApp.class" beforeDir="false" />
++      <change beforePath="$PROJECT_DIR$/out/production/SmartMirror/textinpng.class" beforeDir="false" />
+       <change beforePath="$PROJECT_DIR$/src/WindowApp.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/WindowApp.java" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/src/textinpng.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/textinpng.java" afterDir="false" />
+     </list>
+     <option name="SHOW_DIALOG" value="false" />
+     <option name="HIGHLIGHT_CONFLICTS" value="true" />
+@@ -38,7 +43,7 @@
+   <component name="Git.Settings">
+     <option name="RECENT_BRANCH_BY_REPOSITORY">
+       <map>
+-        <entry key="$PROJECT_DIR$" value="main" />
++        <entry key="$PROJECT_DIR$" value="Fonts" />
+       </map>
+     </option>
+     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+@@ -54,13 +59,16 @@
+   <component name="PropertiesComponent">{
+   &quot;keyToString&quot;: {
+     &quot;Downloaded.Files.Path.Enabled&quot;: &quot;true&quot;,
++    &quot;Git.Branch.Popup.ShowAllRemotes&quot;: &quot;true&quot;,
+     &quot;Repository.Attach.Annotations&quot;: &quot;false&quot;,
+     &quot;Repository.Attach.JavaDocs&quot;: &quot;false&quot;,
+     &quot;Repository.Attach.Sources&quot;: &quot;false&quot;,
+     &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+     &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+-    &quot;project.structure.last.edited&quot;: &quot;Libraries&quot;,
+-    &quot;project.structure.proportion&quot;: &quot;0.0&quot;,
++    &quot;jdk.selected.JAVA_MODULE&quot;: &quot;11&quot;,
++    &quot;last_opened_file_path&quot;: &quot;C:/Users/prizm/Desktop/json-20220924.jar&quot;,
++    &quot;project.structure.last.edited&quot;: &quot;Artifacts&quot;,
++    &quot;project.structure.proportion&quot;: &quot;0.15&quot;,
+     &quot;project.structure.side.proportion&quot;: &quot;0.2&quot;
+   }
+ }</component>
+@@ -87,9 +95,10 @@
+     </configuration>
+     <recent_temporary>
+       <list>
++        <item itemvalue="Application.Parser" />
++        <item itemvalue="Application.Main" />
+         <item itemvalue="Application.Main" />
+         <item itemvalue="Application.Parser" />
+-        <item itemvalue="Application.Parser" />
+         <item itemvalue="Application.Main" />
+       </list>
+     </recent_temporary>
+@@ -103,6 +112,14 @@
+       <option name="presentableId" value="Default" />
+       <updated>1668371998164</updated>
+     </task>
++    <task id="LOCAL-00001" summary="DetailsWeather">
++      <created>1669807648328</created>
++      <option name="number" value="00001" />
++      <option name="presentableId" value="LOCAL-00001" />
++      <option name="project" value="LOCAL" />
++      <updated>1669807648328</updated>
++    </task>
++    <option name="localTasksCounter" value="2" />
+     <servers />
+   </component>
+   <component name="Vcs.Log.Tabs.Properties">
+@@ -115,6 +132,10 @@
+         </entry>
+       </map>
+     </option>
++  </component>
++  <component name="VcsManagerConfiguration">
++    <MESSAGE value="DetailsWeather" />
++    <option name="LAST_COMMIT_MESSAGE" value="DetailsWeather" />
+   </component>
+   <component name="com.intellij.coverage.CoverageDataManagerImpl">
+     <SUITE FILE_PATH="coverage/SmartMirror$Parser.ic" NAME="Parser Coverage Results" MODIFIED="1668163807775" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
+Index: .idea/misc.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+><?xml version=\"1.0\" encoding=\"UTF-8\"?>\r\n<project version=\"4\">\r\n  <component name=\"ProjectRootManager\" version=\"2\" project-jdk-name=\"11\" project-jdk-type=\"JavaSDK\">\r\n    <output url=\"file://$PROJECT_DIR$/out\" />\r\n  </component>\r\n</project>
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/.idea/misc.xml b/.idea/misc.xml
+--- a/.idea/misc.xml	(revision 7dd7418d1de728cdcaad18ab01e2d7c67f5d75e0)
++++ b/.idea/misc.xml	(date 1670170875624)
+@@ -1,6 +1,6 @@
+ <?xml version="1.0" encoding="UTF-8"?>
+ <project version="4">
+-  <component name="ProjectRootManager" version="2" project-jdk-name="11" project-jdk-type="JavaSDK">
++  <component name="ProjectRootManager" version="2" languageLevel="JDK_11" default="true" project-jdk-name="11" project-jdk-type="JavaSDK">
+     <output url="file://$PROJECT_DIR$/out" />
+   </component>
+ </project>
+\ No newline at end of file
