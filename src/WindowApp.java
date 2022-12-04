@@ -33,7 +33,7 @@ public class WindowApp extends JFrame { //Наследуя от JFrame мы по
     JLabel fiveLabeltext;
     public WindowApp(){
         super("SmartMirror"); //Заголовок окна
-        //this.setExtendedState(JFrame.MAXIMIZED_BOTH); //fullscreen
+        this.setExtendedState(JFrame.MAXIMIZED_BOTH); //fullscreen
         this.setUndecorated(true); //безрамочный режим
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE); //это нужно для того чтобы при закрытии окна закрывалась и программа
         this.getContentPane().setBackground(Color.BLACK); //задний фон окна черный
