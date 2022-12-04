@@ -11,10 +11,11 @@
   <component name="ChangeListManager">
     <list default="true" id="43d7158a-dc04-420b-8992-71886501b65e" name="Changes" comment="debug compiling">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/SmartMirror_jar/SmartMirror.jar" beforeDir="false" afterPath="$PROJECT_DIR$/out/artifacts/SmartMirror_jar/SmartMirror.jar" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/SmartMirror/FesterExtraLight.otf" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/SmartMirror/WindowApp.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/SmartMirror/WindowApp.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/SmartMirror/font/FesterExtraLight.otf" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/FesterExtraLight.otf" beforeDir="false" afterPath="$PROJECT_DIR$/src/font/FesterExtraLight.otf" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/WindowApp.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/WindowApp.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/font/FesterExtraLight.otf" beforeDir="false" afterPath="$PROJECT_DIR$/src/FesterExtraLight.otf" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -63,6 +64,7 @@
 }]]></component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="D:\JavaProject\SmartMirror\src\font" />
       <recent name="D:\JavaProject\SmartMirror\src" />
     </key>
   </component>
@@ -134,7 +136,14 @@
       <option name="project" value="LOCAL" />
       <updated>1670171174790</updated>
     </task>
-    <option name="localTasksCounter" value="5" />
+    <task id="LOCAL-00005" summary="debug compiling">
+      <created>1670172509958</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1670172509958</updated>
+    </task>
+    <option name="localTasksCounter" value="6" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">

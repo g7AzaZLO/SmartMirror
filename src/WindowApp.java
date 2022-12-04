@@ -43,15 +43,15 @@ public class WindowApp extends JFrame { //Наследуя от JFrame мы по
         int screensizey = (int) size.getHeight(); // Записываем высоту экрана
         System.out.println(screensizex+" "+screensizey); // Выводим размер экрана()
 
-        GraphicsEnvironment ge = GraphicsEnvironment.getLocalGraphicsEnvironment();
+  /*      GraphicsEnvironment ge = GraphicsEnvironment.getLocalGraphicsEnvironment();
         try {
-            ge.registerFont(Font.createFont(Font.TRUETYPE_FONT, new File("FesterExtraLight.otf")));
+            ge.registerFont(Font.createFont(Font.TRUETYPE_FONT, new File("font","FesterExtraLight.otf")));
         } catch (FontFormatException e) {
             throw new RuntimeException(e);
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
-
+*/
         Font mainFont = new Font("Fester ExtraLight",Font.PLAIN, 24);
         Font calendarFont = new Font("Fester ExtraLight",Font.PLAIN, 20);
         Font frazeFont = new Font("Fester ExtraLight",Font.PLAIN, 36);
