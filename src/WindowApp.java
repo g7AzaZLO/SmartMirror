@@ -45,7 +45,7 @@ public class WindowApp extends JFrame { //Наследуя от JFrame мы по
 
         GraphicsEnvironment ge = GraphicsEnvironment.getLocalGraphicsEnvironment();
         try {
-            ge.registerFont(Font.createFont(Font.TRUETYPE_FONT, new File("font\\FesterExtraLight.otf")));
+            ge.registerFont(Font.createFont(Font.TRUETYPE_FONT, new File("src\\font\\FesterExtraLight.otf")));
         } catch (FontFormatException e) {
             throw new RuntimeException(e);
         } catch (IOException e) {

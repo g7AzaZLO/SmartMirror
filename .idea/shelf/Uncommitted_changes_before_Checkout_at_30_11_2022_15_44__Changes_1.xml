@@ -1,0 +1,14 @@
+<changelist name="Uncommitted_changes_before_Checkout_at_30_11_2022_15_44_[Changes]1" date="1669812272892" recycled="true" deleted="true">
+  <option name="PATH" value="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_30_11_2022_15_44_[Changes]1/shelved.patch" />
+  <option name="DESCRIPTION" value="Uncommitted changes before Checkout at 30.11.2022 15:44 [Changes]" />
+  <binary>
+    <option name="BEFORE_PATH" value="src/weather/pasmurno.png" />
+    <option name="AFTER_PATH" value="src/weather/pasmurno.png" />
+    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_30_11_2022_15_44_[Changes]1/pasmurno.png" />
+  </binary>
+  <binary>
+    <option name="BEFORE_PATH" value="out/production/SmartMirror/textinpng.class" />
+    <option name="AFTER_PATH" value="out/production/SmartMirror/textinpng.class" />
+    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_30_11_2022_15_44_[Changes]1/textinpng.class" />
+  </binary>
+</changelist>

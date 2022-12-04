@@ -1,0 +1,14 @@
+Index: src/textinpng.java
+===================================================================
+diff --git a/src/textinpng.java b/src/textinpng.java
+--- a/src/textinpng.java	
++++ b/src/textinpng.java	
+@@ -20,7 +20,7 @@
+             return A+"littlesnow.png";
+         }
+         if(wet.equals("Переменная облачность")){
+-            return A+"pasmurno.png";
++            return A+"partlycloudy.png";
+         }
+         if(wet.equals("Облачно")){
+             return A+"pasmurno.png";
