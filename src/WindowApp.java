@@ -33,31 +33,25 @@ public class WindowApp extends JFrame { //Наследуя от JFrame мы по
     JLabel fiveLabeltext;
     public WindowApp(){
         super("SmartMirror"); //Заголовок окна
-        //this.setExtendedState(JFrame.MAXIMIZED_BOTH); //fullscreen
-        this.setSize(1920,1080);
+        //this.setSize(1920,1080);
+        GraphicsEnvironment env = GraphicsEnvironment.getLocalGraphicsEnvironment();
+        GraphicsDevice vc = env.getDefaultScreenDevice();
+        //vc.setFullScreenWindow(this);
         this.setUndecorated(true); //безрамочный режим
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE); //это нужно для того чтобы при закрытии окна закрывалась и программа
         this.getContentPane().setBackground(Color.BLACK); //задний фон окна черный
         this.setResizable(false); //на всякий случай убираем возможность изменения размера окна
+        vc.setFullScreenWindow(this);
         this.setLayout(null); //без этого иногда не работает setBounds
         Dimension size = Toolkit.getDefaultToolkit().getScreenSize(); //для получения размера экрана
         int screensizex = ( int )size.getWidth();  // Записываем ширину экрана
         int screensizey = (int) size.getHeight(); // Записываем высоту экрана
         System.out.println(screensizex+" "+screensizey); // Выводим размер экрана()
 
-  /*      GraphicsEnvironment ge = GraphicsEnvironment.getLocalGraphicsEnvironment();
-        try {
-            ge.registerFont(Font.createFont(Font.TRUETYPE_FONT, new File("font","FesterExtraLight.otf")));
-        } catch (FontFormatException e) {
-            throw new RuntimeException(e);
-        } catch (IOException e) {
-            throw new RuntimeException(e);
-        }
-*/
-        Font mainFont = new Font("Fester ExtraLight",Font.PLAIN, 24);
-        Font calendarFont = new Font("Fester ExtraLight",Font.PLAIN, 20);
-        Font frazeFont = new Font("Fester ExtraLight",Font.PLAIN, 36);
-        Font timeFont = new Font("Fester ExtraLight",Font.PLAIN, 38);
+        Font mainFont = new Font("Fester ExtraLight",Font.PLAIN, 35);
+        Font calendarFont = new Font("Fester ExtraLight",Font.PLAIN, 30);
+        Font frazeFont = new Font("Fester ExtraLight",Font.PLAIN, 50);
+        Font timeFont = new Font("Fester ExtraLight",Font.PLAIN, 47);
 
 
         timeFormat = new SimpleDateFormat("HH:mm:ss"); //создаем формат времени
@@ -65,24 +59,24 @@ public class WindowApp extends JFrame { //Наследуя от JFrame мы по
         timeLabel.setForeground(Color.WHITE); //делаем текст белым
         timeLabel.setFont(timeFont);
         this.add(timeLabel); //обавляем лэйб времени на экран
-        timeLabel.setBounds(screensizex/2-80,screensizey/2-660,1000,400); //ставим время ближе к центру в центр
+        timeLabel.setBounds(screensizex/2-80,710,1000,400); //ставим время ближе к центру в центр
         frazeLabel = new JLabel(); //создаем лейбл под время
         frazeLabel.setHorizontalAlignment(JLabel.CENTER);
         CalendarLabel = new JLabel(); //создаем лейбл под дату
         this.getContentPane().setBackground(Color.BLACK); //задний фон окна черный
-        frazeLabel.setBounds(screensizex/2-475,600,1000,400);
+        frazeLabel.setBounds(screensizex/2-475,800,1000,400);
         frazeLabel.setForeground(Color.WHITE); //делаем текст белым
         frazeLabel.setFont(frazeFont);
         this.add(frazeLabel);
         this.add(CalendarLabel);//добавляем кнопку
-        CalendarLabel.setBounds(JLabel.LEADING,JLabel.LEADING-90,1000,400); //ставим календарь ближе к центру в центр
+        CalendarLabel.setBounds(JLabel.LEADING,JLabel.LEADING-40,1000,400); //ставим календарь ближе к центру в центр
         CalendarLabel.setForeground(Color.WHITE); //делаем текст белым
         CalendarLabel.setFont(calendarFont);
         dataLabel = new JLabel(); //создаем лейбл под время
         dataLabel.setForeground(Color.WHITE); //делаем текст белым
         dataLabel.setFont(mainFont);
         this.add(dataLabel);
-        dataLabel.setBounds(screensizex/2-710,screensizey/2-660,1000,400); //ставим время ближе к центру в центр
+        dataLabel.setBounds(5,screensizey/2-710,1000,400); //ставим время ближе к центру в центр
         /////////////////////////////////
         todayLabel = new JLabel(); //создаем лейбл под время
         this.add(todayLabel);
@@ -90,48 +84,48 @@ public class WindowApp extends JFrame { //Наследуя от JFrame мы по
         //////////////////////////
         segodnyaLabel = new JLabel(); //создаем лейбл сегодня
         segodnyaLabeltext = new JLabel(); //создаем лейбл сегодня
-        segodnyaLabeltext.setForeground(Color.GRAY); //делаем текст белым
+        segodnyaLabeltext.setForeground(Color.WHITE); //делаем текст белым
         segodnyaLabeltext.setFont(calendarFont);
         this.add(segodnyaLabel ); //обавляем лэйб времени на экран
         this.add(segodnyaLabeltext ); //обавляем лэйб времени на экран
-        segodnyaLabel .setBounds(1390 ,JLabel.RIGHT-130 ,1000,400); //ставим время ближе к центру в центр
-        segodnyaLabeltext .setBounds(1210 ,JLabel.RIGHT-130 ,1000,400); //ставим время ближе к центру в центр
+        segodnyaLabel .setBounds(1850 ,JLabel.RIGHT-130-50 ,1000,400); //ставим время ближе к центру в центр
+        segodnyaLabeltext .setBounds(1570 ,JLabel.RIGHT-130-50 ,1000,400); //ставим время ближе к центру в центр
         //////////////////////
         tomorrowLabel = new JLabel(); //создаем лейбл завтра
         this.add( tomorrowLabel); //обавляем лэйб времени на экран
-        tomorrowLabel.setBounds(1390 ,JLabel.RIGHT-80 ,1000,400); //ставим время ближе к центру в центр
+        tomorrowLabel.setBounds(1850 ,JLabel.RIGHT-70-50 ,1000,400); //ставим время ближе к центру в центр
         tomorrowLabeltext = new JLabel(); //создаем лейбл завтра
         tomorrowLabeltext.setForeground(Color.WHITE); //делаем текст белым
         tomorrowLabeltext.setFont(calendarFont);
         this.add( tomorrowLabeltext); //обавляем лэйб времени на экран
-        tomorrowLabeltext.setBounds(1210 ,JLabel.RIGHT-80 ,1000,400); //ставим время ближе к центру в центр
+        tomorrowLabeltext.setBounds(1570 ,JLabel.RIGHT-70-50 ,1000,400); //ставим время ближе к центру в центр
         ///////////////////////
         threedayLabel = new JLabel(); //создаем лейбл послезавтра
         this.add(threedayLabel); //обавляем лэйб времени на экран
-        threedayLabel.setBounds(1390 ,JLabel.RIGHT-30 ,1000,400); //ставим время ближе к центру в центр
+        threedayLabel.setBounds(1850 ,JLabel.RIGHT-10-50 ,1000,400); //ставим время ближе к центру в центр
         threedayLabeltext = new JLabel(); //создаем лейбл послезавтра
         threedayLabeltext.setForeground(Color.WHITE); //делаем текст белым
         threedayLabeltext.setFont(calendarFont);
         this.add(threedayLabeltext); //обавляем лэйб времени на экран
-        threedayLabeltext.setBounds(1210 ,JLabel.RIGHT-30 ,1000,400); //ставим время ближе к центру в центр
+        threedayLabeltext.setBounds(1570 ,JLabel.RIGHT-10-50 ,1000,400); //ставим время ближе к центру в центр
         ////////////////////////////
         fourLabel = new JLabel(); //создаем лейбл день 4
         this.add(fourLabel); //обавляем лэйб времени на экран
-        fourLabel.setBounds(1390 ,JLabel.RIGHT+20 ,1000,400); //ставим время ближе к центру в центр
+        fourLabel.setBounds(1850 ,JLabel.RIGHT+50-50 ,1000,400); //ставим время ближе к центру в центр
         fourLabeltext = new JLabel(); //создаем лейбл день 4
         fourLabeltext.setForeground(Color.WHITE); //делаем текст белым
         fourLabeltext.setFont(calendarFont);
         this.add(fourLabeltext); //обавляем лэйб времени на экран
-        fourLabeltext.setBounds(1210 ,JLabel.RIGHT+20 ,1000,400); //ставим время ближе к центру в центр
+        fourLabeltext.setBounds(1570 ,JLabel.RIGHT+50-50 ,1000,400); //ставим время ближе к центру в центр
         //////////////////
         fiveLabel = new JLabel(); //создаем лейбл день 5
         this.add(fiveLabel); //обавляем лэйб времени на экран
-        fiveLabel.setBounds(1390 ,JLabel.RIGHT+70 ,1000,400); //ставим время ближе к центру в центр
+        fiveLabel.setBounds(1850 ,JLabel.RIGHT+110-50 ,1000,400); //ставим время ближе к центру в центр
         fiveLabeltext = new JLabel(); //создаем лейбл день 5
         fiveLabeltext.setForeground(Color.WHITE); //делаем текст белым
         fiveLabeltext.setFont(calendarFont);
         this.add(fiveLabeltext); //обавляем лэйб времени на экран
-        fiveLabeltext.setBounds(1210 ,JLabel.RIGHT+70 ,1000,400); //ставим время ближе к центру в центр
+        fiveLabeltext.setBounds(1570 ,JLabel.RIGHT+110-50 ,1000,400); //ставим время ближе к центру в центр
     }
     public void fraze(){
         Thread frazeThread = new Thread(){
@@ -297,6 +291,7 @@ public class WindowApp extends JFrame { //Наследуя от JFrame мы по
                                 pogo = clearpog[1]; //берем погоду из массива+
                                 segodnyaLabeltext.setText(clearpog[0] +"   "+ clearpog[2]+ "   " + clearpog[3]); //устанавливаем в наш лейбл сам текст
                                 pog = textinpng.png(pogo); // перегоняем его в название пнг файла
+                                System.out.println(pog);
                                 segodnyaLabel.setIcon(new ImageIcon(pog));
                             }
                             if(i==1) {
