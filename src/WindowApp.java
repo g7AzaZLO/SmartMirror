@@ -1,6 +1,9 @@
 import javax.swing.JFrame;
 import java.awt.*;
 import javax.swing.*;
+import java.awt.GraphicsEnvironment;
+import java.io.File;
+import java.io.IOException;
 import java.text.DateFormatSymbols;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
@@ -8,10 +11,6 @@ import java.lang.Thread;
 import java.util.Date;
 import java.util.GregorianCalendar;
 import java.util.Random;
-import java.awt.image.BufferedImage;
-import java.io.File;
-import java.io.IOException;
-import javax.imageio.ImageIO;
 import javax.swing.ImageIcon;
 public class WindowApp extends JFrame { //Наследуя от JFrame мы получаем всю функциональность окна
     SimpleDateFormat timeFormat;
@@ -43,23 +42,43 @@ public class WindowApp extends JFrame { //Наследуя от JFrame мы по
         int screensizex = ( int )size.getWidth();  // Записываем ширину экрана
         int screensizey = (int) size.getHeight(); // Записываем высоту экрана
         System.out.println(screensizex+" "+screensizey); // Выводим размер экрана()
+
+        GraphicsEnvironment ge = GraphicsEnvironment.getLocalGraphicsEnvironment();
+        try {
+            ge.registerFont(Font.createFont(Font.TRUETYPE_FONT, new File("font\\FesterExtraLight.otf")));
+        } catch (FontFormatException e) {
+            throw new RuntimeException(e);
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+
+        Font mainFont = new Font("Fester ExtraLight",Font.PLAIN, 24);
+        Font calendarFont = new Font("Fester ExtraLight",Font.PLAIN, 20);
+        Font frazeFont = new Font("Fester ExtraLight",Font.PLAIN, 36);
+        Font timeFont = new Font("Fester ExtraLight",Font.PLAIN, 38);
+
+
         timeFormat = new SimpleDateFormat("HH:mm:ss"); //создаем формат времени
         timeLabel = new JLabel(); //создаем лейбл под время
         timeLabel.setForeground(Color.WHITE); //делаем текст белым
+        timeLabel.setFont(timeFont);
         this.add(timeLabel); //обавляем лэйб времени на экран
-        timeLabel.setBounds(screensizex/2,screensizey/2-660,1000,400); //ставим время ближе к центру в центр
+        timeLabel.setBounds(screensizex/2-80,screensizey/2-660,1000,400); //ставим время ближе к центру в центр
         frazeLabel = new JLabel(); //создаем лейбл под время
         frazeLabel.setHorizontalAlignment(JLabel.CENTER);
         CalendarLabel = new JLabel(); //создаем лейбл под дату
         this.getContentPane().setBackground(Color.BLACK); //задний фон окна черный
         frazeLabel.setBounds(screensizex/2-475,600,1000,400);
         frazeLabel.setForeground(Color.WHITE); //делаем текст белым
+        frazeLabel.setFont(frazeFont);
         this.add(frazeLabel);
-        this.add(CalendarLabel);;//добавляем кнопку
-        CalendarLabel.setBounds(JLabel.LEADING,JLabel.LEADING-130,1000,400); //ставим календарь ближе к центру в центр
+        this.add(CalendarLabel);//добавляем кнопку
+        CalendarLabel.setBounds(JLabel.LEADING,JLabel.LEADING-90,1000,400); //ставим календарь ближе к центру в центр
         CalendarLabel.setForeground(Color.WHITE); //делаем текст белым
+        CalendarLabel.setFont(calendarFont);
         dataLabel = new JLabel(); //создаем лейбл под время
         dataLabel.setForeground(Color.WHITE); //делаем текст белым
+        dataLabel.setFont(mainFont);
         this.add(dataLabel);
         dataLabel.setBounds(screensizex/2-710,screensizey/2-660,1000,400); //ставим время ближе к центру в центр
         /////////////////////////////////
@@ -69,43 +88,48 @@ public class WindowApp extends JFrame { //Наследуя от JFrame мы по
         //////////////////////////
         segodnyaLabel = new JLabel(); //создаем лейбл сегодня
         segodnyaLabeltext = new JLabel(); //создаем лейбл сегодня
-        segodnyaLabeltext.setForeground(Color.WHITE); //делаем текст белым
+        segodnyaLabeltext.setForeground(Color.GRAY); //делаем текст белым
+        segodnyaLabeltext.setFont(calendarFont);
         this.add(segodnyaLabel ); //обавляем лэйб времени на экран
         this.add(segodnyaLabeltext ); //обавляем лэйб времени на экран
-        segodnyaLabel .setBounds(1390 ,JLabel.RIGHT-130 ,1000,400); ; //ставим время ближе к центру в центр
-        segodnyaLabeltext .setBounds(1270 ,JLabel.RIGHT-130 ,1000,400); ; //ставим время ближе к центру в центр
+        segodnyaLabel .setBounds(1390 ,JLabel.RIGHT-130 ,1000,400); //ставим время ближе к центру в центр
+        segodnyaLabeltext .setBounds(1210 ,JLabel.RIGHT-130 ,1000,400); //ставим время ближе к центру в центр
         //////////////////////
         tomorrowLabel = new JLabel(); //создаем лейбл завтра
         this.add( tomorrowLabel); //обавляем лэйб времени на экран
         tomorrowLabel.setBounds(1390 ,JLabel.RIGHT-80 ,1000,400); //ставим время ближе к центру в центр
         tomorrowLabeltext = new JLabel(); //создаем лейбл завтра
         tomorrowLabeltext.setForeground(Color.WHITE); //делаем текст белым
+        tomorrowLabeltext.setFont(calendarFont);
         this.add( tomorrowLabeltext); //обавляем лэйб времени на экран
-        tomorrowLabeltext.setBounds(1270 ,JLabel.RIGHT-80 ,1000,400); //ставим время ближе к центру в центр
+        tomorrowLabeltext.setBounds(1210 ,JLabel.RIGHT-80 ,1000,400); //ставим время ближе к центру в центр
         ///////////////////////
         threedayLabel = new JLabel(); //создаем лейбл послезавтра
         this.add(threedayLabel); //обавляем лэйб времени на экран
         threedayLabel.setBounds(1390 ,JLabel.RIGHT-30 ,1000,400); //ставим время ближе к центру в центр
         threedayLabeltext = new JLabel(); //создаем лейбл послезавтра
         threedayLabeltext.setForeground(Color.WHITE); //делаем текст белым
+        threedayLabeltext.setFont(calendarFont);
         this.add(threedayLabeltext); //обавляем лэйб времени на экран
-        threedayLabeltext.setBounds(1270 ,JLabel.RIGHT-30 ,1000,400); //ставим время ближе к центру в центр
+        threedayLabeltext.setBounds(1210 ,JLabel.RIGHT-30 ,1000,400); //ставим время ближе к центру в центр
         ////////////////////////////
         fourLabel = new JLabel(); //создаем лейбл день 4
         this.add(fourLabel); //обавляем лэйб времени на экран
         fourLabel.setBounds(1390 ,JLabel.RIGHT+20 ,1000,400); //ставим время ближе к центру в центр
         fourLabeltext = new JLabel(); //создаем лейбл день 4
         fourLabeltext.setForeground(Color.WHITE); //делаем текст белым
+        fourLabeltext.setFont(calendarFont);
         this.add(fourLabeltext); //обавляем лэйб времени на экран
-        fourLabeltext.setBounds(1270 ,JLabel.RIGHT+20 ,1000,400); //ставим время ближе к центру в центр
+        fourLabeltext.setBounds(1210 ,JLabel.RIGHT+20 ,1000,400); //ставим время ближе к центру в центр
         //////////////////
         fiveLabel = new JLabel(); //создаем лейбл день 5
         this.add(fiveLabel); //обавляем лэйб времени на экран
         fiveLabel.setBounds(1390 ,JLabel.RIGHT+70 ,1000,400); //ставим время ближе к центру в центр
         fiveLabeltext = new JLabel(); //создаем лейбл день 5
         fiveLabeltext.setForeground(Color.WHITE); //делаем текст белым
+        fiveLabeltext.setFont(calendarFont);
         this.add(fiveLabeltext); //обавляем лэйб времени на экран
-        fiveLabeltext.setBounds(1270 ,JLabel.RIGHT+70 ,1000,400); //ставим время ближе к центру в центр
+        fiveLabeltext.setBounds(1210 ,JLabel.RIGHT+70 ,1000,400); //ставим время ближе к центру в центр
     }
     public void fraze(){
         Thread frazeThread = new Thread(){
@@ -120,7 +144,7 @@ public class WindowApp extends JFrame { //Наследуя от JFrame мы по
                         int rnd = new Random().nextInt(frazeList.length);
                         String fraze = frazeList[rnd];
                         frazeLabel.setText(fraze); //устанавливаем в наш лейбл сам текст
-                        sleep(10000);
+                        sleep(100000);
                     }
                 }
                 catch (Exception e){
@@ -155,7 +179,7 @@ public class WindowApp extends JFrame { //Наследуя от JFrame мы по
                         SimpleDateFormat formatter= new SimpleDateFormat("dd-MM-yyyy");
                         Date date = new Date();
                         dataLabel.setText("Текущая дата:  " + formatter.format(date)); //устанавливаем в наш лейбл сам текст
-                        sleep(100000);
+                        sleep(900000);
                     }
                 }
                 catch (Exception e){
@@ -172,6 +196,12 @@ public class WindowApp extends JFrame { //Наследуя от JFrame мы по
                     for(;;){
                         String A="<html>";
                         String c="&nbsp ";
+                        String c2="&nbsp &nbsp ";
+                        String c3="&nbsp&thinsp &thinsp";
+                        String c4=" &nbsp &nbsp";
+                        String c5=" &nbsp &thinsp ";
+                        String c6="&nbsp &thinsp ";
+                        String c7="&nbsp &thinsp&thinsp&thinsp&thinsp";
                         int schetchikprobelov=0;
                         int schetchiknovoystroki=0;
                         boolean fl=true;
@@ -202,7 +232,7 @@ public class WindowApp extends JFrame { //Наследуя от JFrame мы по
                         String[] weekdayNames = new DateFormatSymbols().getShortWeekdays();
                         do
                         {
-                            A+=weekdayNames[weekday];A+=c;A+=c;
+                            A+=weekdayNames[weekday];A+=c7;
                             d.add(Calendar.DAY_OF_MONTH, 1);
                             weekday = d.get(Calendar.DAY_OF_WEEK);
                         }
@@ -210,7 +240,7 @@ public class WindowApp extends JFrame { //Наследуя от JFrame мы по
                         A+="<br>";
 
                         for (int i = 1; i <= indent; i++) {
-                            A+=c;A+=c;A+=c;A+=c;
+                            A+=c5;A+=c5;
                         }
 
                         d.set(Calendar.DAY_OF_MONTH, 1);
@@ -219,11 +249,11 @@ public class WindowApp extends JFrame { //Наследуя от JFrame мы по
                             // print day
                             int day = d.get(Calendar.DAY_OF_MONTH);
                             int day1=day;
-                            if(day1/10==0){if (day == today){A+="<font bgcolor=red>";A+=today;A+="</font>";}else A+=day;A+=c;A+=c;if(fl==true)schetchikprobelov+=4;}
+                            if(day1/10==0){if (day == today){A+="<font bgcolor=red>";A+=today;A+="</font>";}else{ A+=day;A+=c3;}if(fl==true)schetchikprobelov+=4;}
                             else
-                            if(day1/100==0){if (day == today){A+="<font bgcolor=red>";A+=today;A+="</font>";}else A+=day;A+=c;if(fl==true)schetchikprobelov+=2;}
+                            if(day1/100==0){if (day == today){A+="<font bgcolor=red>";A+=today;A+="</font>";}else{ A+=day;A+=c;}if(fl==true)schetchikprobelov+=2;}
                             // mark current day with *
-                            if (day == today){A+=c;}
+                            if (day == today){A+=c;A+=c6;}
                             else{A+=c;}
 
                             // advance d to the next day
@@ -240,7 +270,7 @@ public class WindowApp extends JFrame { //Наследуя от JFrame мы по
                         if (weekday != firstDayOfWeek){A+="<br>";}
                         A+="<html>";
                         CalendarLabel.setText(A); //устанавливаем в наш лейбл сам текст
-                        sleep(100000);
+                        sleep(900000);
                     }
                 }
                 catch (Exception e){
@@ -292,7 +322,7 @@ public class WindowApp extends JFrame { //Наследуя от JFrame мы по
                                 fiveLabel.setIcon(new ImageIcon(pog));
                             }
                         }
-                        sleep(1000000);
+                        sleep(1800000);
                     }
                 }
                 catch (Exception e){

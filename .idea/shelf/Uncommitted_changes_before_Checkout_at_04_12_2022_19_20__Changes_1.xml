@@ -1,0 +1,14 @@
+<changelist name="Uncommitted_changes_before_Checkout_at_04_12_2022_19_20_[Changes]1" date="1670170861125" recycled="true" deleted="true">
+  <option name="PATH" value="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_04_12_2022_19_20_[Changes]1/shelved.patch" />
+  <option name="DESCRIPTION" value="Uncommitted changes before Checkout at 04.12.2022 19:20 [Changes]" />
+  <binary>
+    <option name="BEFORE_PATH" value="out/production/SmartMirror/WindowApp.class" />
+    <option name="AFTER_PATH" value="out/production/SmartMirror/WindowApp.class" />
+    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_04_12_2022_19_20_[Changes]1/WindowApp.class" />
+  </binary>
+  <binary>
+    <option name="BEFORE_PATH" value="out/artifacts/SmartMirror_jar/SmartMirror.jar" />
+    <option name="AFTER_PATH" value="out/artifacts/SmartMirror_jar/SmartMirror.jar" />
+    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_04_12_2022_19_20_[Changes]1/SmartMirror.jar" />
+  </binary>
+</changelist>

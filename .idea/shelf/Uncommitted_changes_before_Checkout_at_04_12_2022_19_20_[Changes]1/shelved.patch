@@ -1,0 +1,113 @@
+Index: .idea/workspace.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/.idea/workspace.xml b/.idea/workspace.xml
+--- a/.idea/workspace.xml	
++++ b/.idea/workspace.xml	
+@@ -1,31 +1,15 @@
+ <?xml version="1.0" encoding="UTF-8"?>
+ <project version="4">
++  <component name="ArtifactsWorkspaceSettings">
++    <artifacts-to-build>
++      <artifact name="SmartMirror:jar" />
++    </artifacts-to-build>
++  </component>
+   <component name="AutoImportSettings">
+     <option name="autoReloadType" value="SELECTIVE" />
+   </component>
+   <component name="ChangeListManager">
+-    <list default="true" id="43d7158a-dc04-420b-8992-71886501b65e" name="Changes" comment="Add +1 icon, new font">
+-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_13_11_2022_23_36__Changes_.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_13_11_2022_23_36__Changes_.xml" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_14_11_2022_1_15__Changes_.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_14_11_2022_1_15__Changes_.xml" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_27_11_2022_1_42_[Changes]/shelved.patch" beforeDir="false" />
+-      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_27_11_2022_1_42__Changes_.xml" beforeDir="false" />
+-      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_28_11_2022_15_58__Changes_.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_28_11_2022_15_58__Changes_.xml" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_30_11_2022_13_12__Changes_.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_30_11_2022_13_12__Changes_.xml" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_30_11_2022_13_13__Changes_.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_30_11_2022_13_13__Changes_.xml" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_30_11_2022_13_14__Changes_.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_30_11_2022_13_14__Changes_.xml" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_30_11_2022_13_23__Changes_.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_30_11_2022_13_23__Changes_.xml" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_30_11_2022_13_14__Changes_.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_30_11_2022_13_14__Changes_.xml" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/out/production/SmartMirror/Main.class" beforeDir="false" />
+-      <change beforePath="$PROJECT_DIR$/out/production/SmartMirror/Parser.class" beforeDir="false" />
+-      <change beforePath="$PROJECT_DIR$/out/production/SmartMirror/WindowApp$1.class" beforeDir="false" />
+-      <change beforePath="$PROJECT_DIR$/out/production/SmartMirror/WindowApp$2.class" beforeDir="false" />
+-      <change beforePath="$PROJECT_DIR$/out/production/SmartMirror/WindowApp$3.class" beforeDir="false" />
+-      <change beforePath="$PROJECT_DIR$/out/production/SmartMirror/WindowApp$4.class" beforeDir="false" />
+-      <change beforePath="$PROJECT_DIR$/out/production/SmartMirror/WindowApp$5.class" beforeDir="false" />
+-      <change beforePath="$PROJECT_DIR$/out/production/SmartMirror/WindowApp.class" beforeDir="false" />
+-      <change beforePath="$PROJECT_DIR$/out/production/SmartMirror/textinpng.class" beforeDir="false" />
++    <list default="true" id="43d7158a-dc04-420b-8992-71886501b65e" name="Changes" comment="скомпилировано">
+       <change beforePath="$PROJECT_DIR$/src/WindowApp.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/WindowApp.java" afterDir="false" />
+     </list>
+     <option name="SHOW_DIALOG" value="false" />
+@@ -43,7 +27,7 @@
+   <component name="Git.Settings">
+     <option name="RECENT_BRANCH_BY_REPOSITORY">
+       <map>
+-        <entry key="$PROJECT_DIR$" value="Fonts" />
++        <entry key="$PROJECT_DIR$" value="OtnosPosition" />
+       </map>
+     </option>
+     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+@@ -65,6 +49,7 @@
+     "Repository.Attach.Sources": "false",
+     "RunOnceActivity.OpenProjectViewOnStart": "true",
+     "RunOnceActivity.ShowReadmeOnStart": "true",
++    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
+     "jdk.selected.JAVA_MODULE": "11",
+     "last_opened_file_path": "C:/Users/prizm/Desktop/json-20220924.jar",
+     "project.structure.last.edited": "Artifacts",
+@@ -119,7 +104,21 @@
+       <option name="project" value="LOCAL" />
+       <updated>1669807648328</updated>
+     </task>
+-    <option name="localTasksCounter" value="2" />
++    <task id="LOCAL-00002" summary="скомпилировано">
++      <created>1670168072497</created>
++      <option name="number" value="00002" />
++      <option name="presentableId" value="LOCAL-00002" />
++      <option name="project" value="LOCAL" />
++      <updated>1670168072497</updated>
++    </task>
++    <task id="LOCAL-00003" summary="скомпилировано">
++      <created>1670168087268</created>
++      <option name="number" value="00003" />
++      <option name="presentableId" value="LOCAL-00003" />
++      <option name="project" value="LOCAL" />
++      <updated>1670168087268</updated>
++    </task>
++    <option name="localTasksCounter" value="4" />
+     <servers />
+   </component>
+   <component name="Vcs.Log.Tabs.Properties">
+@@ -135,7 +134,8 @@
+   </component>
+   <component name="VcsManagerConfiguration">
+     <MESSAGE value="DetailsWeather" />
+-    <option name="LAST_COMMIT_MESSAGE" value="DetailsWeather" />
++    <MESSAGE value="скомпилировано" />
++    <option name="LAST_COMMIT_MESSAGE" value="скомпилировано" />
+   </component>
+   <component name="com.intellij.coverage.CoverageDataManagerImpl">
+     <SUITE FILE_PATH="coverage/SmartMirror$Parser.ic" NAME="Parser Coverage Results" MODIFIED="1668163807775" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
+Index: src/WindowApp.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/WindowApp.java b/src/WindowApp.java
+--- a/src/WindowApp.java	
++++ b/src/WindowApp.java	
+@@ -45,7 +45,7 @@
+ 
+         GraphicsEnvironment ge = GraphicsEnvironment.getLocalGraphicsEnvironment();
+         try {
+-            ge.registerFont(Font.createFont(Font.TRUETYPE_FONT, new File("src\\font\\FesterExtraLight.otf")));
++            ge.registerFont(Font.createFont(Font.TRUETYPE_FONT, new File("font\\FesterExtraLight.otf")));
+         } catch (FontFormatException e) {
+             throw new RuntimeException(e);
+         } catch (IOException e) {
