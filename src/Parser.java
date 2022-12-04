@@ -10,7 +10,7 @@ import java.net.URL;
 public class Parser {
     private static Document getPage() throws IOException {
         String url = "https://www.gismeteo.ru/weather-moscow-4368/10-days/";
-        Document page = Jsoup.parse(new URL(url),3000);
+        Document page = Jsoup.parse(new URL(url),30000);
         return page;
     }
 
