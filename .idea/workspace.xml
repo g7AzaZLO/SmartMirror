@@ -10,15 +10,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="43d7158a-dc04-420b-8992-71886501b65e" name="Changes" comment="debug compiling">
-      <change afterPath="$PROJECT_DIR$/src/heavyrain.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/littlerain.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/littlesnow.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/partlycloudy.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/pasmurno.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/snow.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/sun.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/weathersnow.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/WindowApp.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/WindowApp.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/SmartMirror/WindowApp$4.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/SmartMirror/WindowApp$4.class" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -244,7 +237,14 @@
       <option name="project" value="LOCAL" />
       <updated>1670277908672</updated>
     </task>
-    <option name="localTasksCounter" value="20" />
+    <task id="LOCAL-00020" summary="debug compiling">
+      <created>1670279092657</created>
+      <option name="number" value="00020" />
+      <option name="presentableId" value="LOCAL-00020" />
+      <option name="project" value="LOCAL" />
+      <updated>1670279092658</updated>
+    </task>
+    <option name="localTasksCounter" value="21" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
