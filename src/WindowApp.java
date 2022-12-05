@@ -50,7 +50,7 @@ public class WindowApp extends JFrame { //Наследуя от JFrame мы по
         System.out.println(screensizex+" "+screensizey); // Выводим размер экрана()
 
         Font mainFont = new Font("Fester ExtraLight",Font.PLAIN, 35);
-        Font calendarFont = new Font("Fester ExtraLight",Font.PLAIN, 30);
+        Font calendarFont = new Font("Fester ExtraLight",Font.PLAIN, 25);
         Font frazeFont = new Font("Fester ExtraLight",Font.PLAIN, 50);
         Font timeFont = new Font("Fester ExtraLight",Font.PLAIN, 47);
 
