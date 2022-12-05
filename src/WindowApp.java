@@ -223,7 +223,7 @@ public class WindowApp extends JFrame { //Наследуя от JFrame мы по
                         String[] weekdayNames = new DateFormatSymbols().getShortWeekdays();
                         do
                         {
-                            A+=weekdayNames[weekday];A+=c;A+=" ";A+=" ";
+                            A+=weekdayNames[weekday];A+=c;A+="&nbsp";
                             d.add(Calendar.DAY_OF_MONTH, 1);
                             weekday = d.get(Calendar.DAY_OF_WEEK);
                         }
