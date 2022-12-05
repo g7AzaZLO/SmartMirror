@@ -326,7 +326,7 @@ public class WindowApp extends JFrame { //Наследуя от JFrame мы по
                                 fiveLabel.setIcon(i5);
                             }
                         }
-                        sleep(9000000);
+                        sleep(1800000);
                     }
                 }
                 catch (Exception e){
