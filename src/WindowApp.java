@@ -192,13 +192,7 @@ public class WindowApp extends JFrame { //Наследуя от JFrame мы по
                 try {
                     for(;;){
                         String A="<html>";
-                        String c="&nbsp \u2009";
-                        String c2="&nbsp &nbsp ";
-                        String c3="&nbsp \u2009  \u2009";
-                        String c4=" &nbsp &nbsp";
-                        String c5=" &nbsp \u2009\u2009 ";
-                        String c6="&nbsp \u2009 ";
-                        String c7="&nbsp \u2009\u2009";
+                        String c=" \u2009 ";
                         int schetchikprobelov=0;
                         int schetchiknovoystroki=0;
                         boolean fl=true;
@@ -229,7 +223,7 @@ public class WindowApp extends JFrame { //Наследуя от JFrame мы по
                         String[] weekdayNames = new DateFormatSymbols().getShortWeekdays();
                         do
                         {
-                            A+=weekdayNames[weekday];A+=c7;
+                            A+=weekdayNames[weekday];A+=c;A+=c; A+=c;
                             d.add(Calendar.DAY_OF_MONTH, 1);
                             weekday = d.get(Calendar.DAY_OF_WEEK);
                         }
@@ -237,7 +231,7 @@ public class WindowApp extends JFrame { //Наследуя от JFrame мы по
                         A+="<br>";
 
                         for (int i = 1; i <= indent; i++) {
-                            A+=c5;A+=c5;
+                            A+=c;A+=c; A+=c;A+=c;A+=c;A+=c;
                         }
 
                         d.set(Calendar.DAY_OF_MONTH, 1);
@@ -246,13 +240,11 @@ public class WindowApp extends JFrame { //Наследуя от JFrame мы по
                             // print day
                             int day = d.get(Calendar.DAY_OF_MONTH);
                             int day1=day;
-                            if(day1/10==0){if (day == today){A+="<font bgcolor=red>";A+=today;A+="</font>";}else{ A+=day;A+=c3;}if(fl==true)schetchikprobelov+=4;}
+                            if(day1/10==0){if (day == today){A+="<font bgcolor=red>";A+=today;A+="</font>";}else{ A+=day;A+=c;A+=c;A+=c;A+=c;}if(fl==true)schetchikprobelov+=4;}
                             else
-                            if(day1/100==0){if (day == today){A+="<font bgcolor=red>";A+=today;A+="</font>";}else{ A+=day;A+=c;}if(fl==true)schetchikprobelov+=2;}
+                            if(day1/100==0){if (day == today){A+="<font bgcolor=red>";A+=today;A+="</font>";}else{ A+=day;A+=c;A+=c;A+=c;}if(fl==true)schetchikprobelov+=2;}
                             // mark current day with *
-                            if (day == today){A+=c;A+=c6;}
-                            else{A+=c;}
-
+                            if (day == today){A+=c;A+=c;A+=c;A+=c;}
                             // advance d to the next day
                             d.add(Calendar.DAY_OF_MONTH, 1);
                             weekday = d.get(Calendar.DAY_OF_WEEK);
@@ -277,6 +269,7 @@ public class WindowApp extends JFrame { //Наследуя от JFrame мы по
         };
         CalendarThread.start();
     }
+
 
     public void Weather(){
         Thread WeatherThread = new Thread(){
