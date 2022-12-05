@@ -194,11 +194,11 @@ public class WindowApp extends JFrame { //Наследуя от JFrame мы по
                         String A="<html>";
                         String c="&nbsp ";
                         String c2="&nbsp &nbsp ";
-                        String c3="&nbsp&thinsp &thinsp";
+                        String c3="&nbsp\u2009 \u2009";
                         String c4=" &nbsp &nbsp";
-                        String c5=" &nbsp &thinsp ";
-                        String c6="&nbsp &thinsp ";
-                        String c7="&nbsp &thinsp&thinsp&thinsp&thinsp";
+                        String c5=" &nbsp \u2009 ";
+                        String c6="&nbsp \u2009 ";
+                        String c7="&nbsp \u2009\u2009\u2009\u2009";
                         int schetchikprobelov=0;
                         int schetchiknovoystroki=0;
                         boolean fl=true;
@@ -326,7 +326,7 @@ public class WindowApp extends JFrame { //Наследуя от JFrame мы по
                                 fiveLabel.setIcon(i5);
                             }
                         }
-                        sleep(1800000);
+                        sleep(9000000);
                     }
                 }
                 catch (Exception e){

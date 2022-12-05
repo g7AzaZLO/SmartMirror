@@ -31,6 +31,12 @@ public class textinpng {
         if(wet.equals("Переменная облачность,  снег")){
             return A+"littlesnow.png";
         }
+        if(wet.equals("Пасмурно, сильный  снег")){
+            return A+"snow.png";
+        }
+        if(wet.equals("Пасмурно, небольшой  мокрый снег")){
+            return A+"littlesnow.png";
+        }
         return "none";
     }
 }
