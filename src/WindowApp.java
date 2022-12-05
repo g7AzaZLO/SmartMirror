@@ -196,7 +196,7 @@ public class WindowApp extends JFrame { //Наследуя от JFrame мы по
                         String c2="&nbsp &nbsp ";
                         String c3="&nbsp\u2009 \u2009";
                         String c4=" &nbsp &nbsp";
-                        String c5=" &nbsp \u2009 ";
+                        String c5=" &nbsp\u2009 ";
                         String c6="&nbsp \u2009 ";
                         String c7="&nbsp \u2009\u2009";
                         int schetchikprobelov=0;
