@@ -1,6 +1,6 @@
 public class textinpng {
     public static String png(String wet){
-        String A="weather\\";
+        String A="";
         if(wet.equals("Пасмурно")){
             return A+"pasmurno.png";
         }
@@ -26,6 +26,9 @@ public class textinpng {
             return A+"pasmurno.png";
         }
         if(wet.equals("Переменная облачность, небольшой  снег")){
+            return A+"littlesnow.png";
+        }
+        if(wet.equals("Переменная облачность,  снег")){
             return A+"littlesnow.png";
         }
         return "none";

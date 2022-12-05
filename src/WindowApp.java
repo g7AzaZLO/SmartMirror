@@ -1,3 +1,4 @@
+import javax.imageio.ImageIO;
 import javax.swing.JFrame;
 import java.awt.*;
 import javax.swing.*;
@@ -286,37 +287,43 @@ public class WindowApp extends JFrame { //Наследуя от JFrame мы по
                         Parser parsWeather = new Parser(); // объект класса парсера
                         textinpng tis = new textinpng();// объект класса перевода в пнг
                         for(int i=0;i<5;i++){ // проходимся 5 раз
+
                             String[] clearpog = parsWeather.weather(i); // забираем массив из парсера
                             if(i==0) {
                                 pogo = clearpog[1]; //берем погоду из массива+
                                 segodnyaLabeltext.setText(clearpog[0] +"   "+ clearpog[2]+ "   " + clearpog[3]); //устанавливаем в наш лейбл сам текст
                                 pog = textinpng.png(pogo); // перегоняем его в название пнг файла
                                 System.out.println(pog);
-                                segodnyaLabel.setIcon(new ImageIcon(pog));
+                                ImageIcon i1 =new javax.swing.ImageIcon(getClass().getResource(pog));
+                                segodnyaLabel.setIcon(i1);
                             }
                             if(i==1) {
                                 pogo = clearpog[1]; //берем погоду из массива
                                 tomorrowLabeltext.setText(clearpog[0] +"   "+ clearpog[2]+ "   " + clearpog[3]); //устанавливаем в наш лейбл сам текст
                                 pog = textinpng.png(pogo); // перегоняем его в название пнг файла
-                                tomorrowLabel.setIcon(new ImageIcon(pog));
+                                ImageIcon i2 =new javax.swing.ImageIcon(getClass().getResource(pog));
+                                tomorrowLabel.setIcon(i2);
                             }
                             if(i==2) {
                                 pogo = clearpog[1]; //берем погоду из массива
                                 threedayLabeltext.setText(clearpog[0] +"   "+ clearpog[2]+ "   " + clearpog[3]); //устанавливаем в наш лейбл сам текст
                                 pog = textinpng.png(pogo); // перегоняем его в название пнг файла
-                                threedayLabel.setIcon(new ImageIcon(pog));
+                                ImageIcon i3 =new javax.swing.ImageIcon(getClass().getResource(pog));
+                                threedayLabel.setIcon(i3);
                             }
                             if(i==3) {
                                 pogo = clearpog[1]; //берем погоду из массива
                                 fourLabeltext.setText(clearpog[0] +"   "+ clearpog[2]+ "   " + clearpog[3]); //устанавливаем в наш лейбл сам текст
                                 pog = textinpng.png(pogo); // перегоняем его в название пнг файла
-                                fourLabel.setIcon(new ImageIcon(pog));
+                                ImageIcon i4 =new javax.swing.ImageIcon(getClass().getResource(pog));
+                                fourLabel.setIcon(i4);
                             }
                             if(i==4) {
                                 pogo = clearpog[1]; //берем погоду из массива
                                 fiveLabeltext.setText(clearpog[0] +"   "+ clearpog[2]+ "   " + clearpog[3]); //устанавливаем в наш лейбл сам текст
                                 pog = textinpng.png(pogo); // перегоняем его в название пнг файла
-                                fiveLabel.setIcon(new ImageIcon(pog));
+                                ImageIcon i5 =new javax.swing.ImageIcon(getClass().getResource(pog));
+                                fiveLabel.setIcon(i5);
                             }
                         }
                         sleep(1800000);
