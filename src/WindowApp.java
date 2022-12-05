@@ -197,7 +197,7 @@ public class WindowApp extends JFrame { //Наследуя от JFrame мы по
                         String c4=" &nbsp &nbsp";
                         String c5=" &nbsp &thinsp ";
                         String c6="&nbsp &thinsp ";
-                        String c7="&nbsp &thinsp&thinsp&thinsp&thinsp";
+                        String c7="&nbsp ";
                         int schetchikprobelov=0;
                         int schetchiknovoystroki=0;
                         boolean fl=true;
