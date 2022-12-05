@@ -192,7 +192,7 @@ public class WindowApp extends JFrame { //Наследуя от JFrame мы по
                 try {
                     for(;;){
                         String A="<html>";
-                        String c="&nbsp ";
+                        String c="&nbsp \u2009";
                         String c2="&nbsp &nbsp ";
                         String c3="&nbsp \u2009  \u2009";
                         String c4=" &nbsp &nbsp";
