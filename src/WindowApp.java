@@ -192,7 +192,7 @@ public class WindowApp extends JFrame { //Наследуя от JFrame мы по
                 try {
                     for(;;){
                         String A="<html>";
-                        String c=" \u00A0";
+                        String c=" \u2009 ";
                         int schetchikprobelov=0;
                         int schetchiknovoystroki=0;
                         boolean fl=true;
@@ -223,7 +223,7 @@ public class WindowApp extends JFrame { //Наследуя от JFrame мы по
                         String[] weekdayNames = new DateFormatSymbols().getShortWeekdays();
                         do
                         {
-                            A+=weekdayNames[weekday];A+="\u00A0\u00A0";
+                            A+=weekdayNames[weekday];A+=c;A+=c;
                             d.add(Calendar.DAY_OF_MONTH, 1);
                             weekday = d.get(Calendar.DAY_OF_WEEK);
                         }
