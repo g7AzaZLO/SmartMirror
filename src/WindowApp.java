@@ -192,7 +192,7 @@ public class WindowApp extends JFrame { //Наследуя от JFrame мы по
                 try {
                     for(;;){
                         String A="<html>";
-                        String c=" \u2009 ";
+                        String c=" \u00A0";
                         int schetchikprobelov=0;
                         int schetchiknovoystroki=0;
                         boolean fl=true;
