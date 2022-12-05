@@ -1,6 +1,6 @@
 public class textinpng {
     public static String png(String wet){
-        String A="weather/";
+        String A="weather\\";
         if(wet.equals("Пасмурно")){
             return A+"pasmurno.png";
         }
